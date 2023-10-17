@@ -2,7 +2,7 @@
 ---
 
 // Colors
-$primary: #ff5722;
+$primary: #e55d77;
 $primary-dark: #a01b16;
 $secondary: #f88379;
 $black: #2f2f41;
@@ -17,8 +17,8 @@ $link-hover-color: lighten($primary, 10%);
 $link-hover-decoration: underline;
 
 // Fonts
-$font-family-base: Helvetica, Arial, sans-serif, -apple-system;
-$font-family-heading: "Playfair Display", serif, -apple-system;
+$font-family-base: Ubuntu;
+$font-family-heading: Ubuntu;
 
 // Footer
 $footer-background-color: $primary;
@@ -65,6 +65,7 @@ body {
   font-size: 16px;
   line-height: 1.2;
   font-family: $font-family-base;
+  font-style: italic;
   @include media-breakpoint-up(md) {
     font-size: 16px;
     line-height: 1.3;
