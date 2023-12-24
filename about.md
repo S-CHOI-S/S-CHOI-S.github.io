@@ -7,29 +7,28 @@ bodyClass: page-about
 
 <style>
   img {
-    margin-right: 20px; /* 이미지 오른쪽 여백 조절 */
+    margin-right: 50px;
   }
 </style>
 
-<img align="left" src="/images/thom-holmes-Lrfw0U_o9I0-unsplash.jpg" width="60%" height="60%"/>
+<img align="left" src="/images/17-42_1.jpg" width="25%" height="25%"/>
 
+<br/><br/><br/>  
 
 # **Sol Choi**
 #### S-CHOI-S
 
-Lorem markdownum aequalis strigis. _Saetigeri iubeas_, vultu huic alvum nondum
-de obside ut laniavit arbor palmis, cum quin. Rupes vetat videndo, armigerae
-crimen habet Priamum nec.
+Lorem markdownum aequalis strigis.
 
-![Accounting Services](/images/thom-holmes-Lrfw0U_o9I0-unsplash.jpg)
+<br/><br/><br/><br/>  
 
-# Objectives
+# Academic
 
-Financial accounting and financial reporting are often used as synonyms.
+B.S. Department of Mechanical System Design Engineering, Seoul National University of Science and Technology, 2024
 
-1. According to International Financial Reporting Standards: the objective of financial reporting is:
-2. To provide financial information that is useful to existing and potential investors, lenders and other creditors in making decisions about providing resources to the reporting entity.
-3. According to the European Accounting Association:
+# Careers
+
+Dec 2021 ~ Present: Undergraduate Researcher of Mobile Robotics Lab. in Seoul National University of Science and Technology
 
 ## Relevance
 
