@@ -5,6 +5,18 @@ description: About
 bodyClass: page-about
 ---
 
+<style>
+  img {
+    margin-right: 20px; /* 이미지 오른쪽 여백 조절 */
+  }
+</style>
+
+<img align="left" src="/images/thom-holmes-Lrfw0U_o9I0-unsplash.jpg" width="60%" height="60%"/>
+
+
+# **Sol Choi**
+#### S-CHOI-S
+
 Lorem markdownum aequalis strigis. _Saetigeri iubeas_, vultu huic alvum nondum
 de obside ut laniavit arbor palmis, cum quin. Rupes vetat videndo, armigerae
 crimen habet Priamum nec.
