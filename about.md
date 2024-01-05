@@ -22,14 +22,24 @@ Lorem markdownum aequalis strigis.
 
 <br/><br/><br/><br/>  
 
+> Research Interests: Mobile Robotics, AI, Aerodynamics
+
 # Academic
 
-B.S. Department of Mechanical System Design Engineering, Seoul National University of Science and Technology, 2024
+- M.S. Department of Mechanical Engineering, Yonsei University, 2024-Present
+- B.S. Department of Mechanical System Design Engineering, Seoul National University of Science and Technology, 2020-2024
 
 # Careers
 
-Dec 2021 ~ Present: Undergraduate Researcher of Mobile Robotics Lab. in Seoul National University of Science and Technology
+- Undergraduate Researcher of Mobile Robotics Lab. in Seoul National University of Science and Technology, Dec 2021 ~ Feb 2024
 
+# Publications
+- ICROS 2023
+
+
+
+
+<!--
 ## Relevance
 
 Relevance is the capacity of the financial information to influence the decision of its users. The ingredients of relevance are the predictive value and confirmatory value. Materiality is a sub-quality of relevance.
@@ -96,3 +106,4 @@ The balance sheet is the financial statement showing a firm's assets, liabilitie
 - goodwill
 
 Owner's equity, sometimes referred to as net assets, is represented differently depending on the type of business ownership. Business ownership can be in the form of a sole proprietorship, partnership, or a corporation. For a corporation, the owner's equity portion usually shows common stock, and retained earnings (earnings kept in the company). Retained earnings come from the retained earnings statement, prepared prior to the balance sheet.
+-->
