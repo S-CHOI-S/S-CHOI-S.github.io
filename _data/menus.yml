@@ -1,18 +1,18 @@
 main:
-  - name: "Publications"
-    url: "/services/"
-    weight: 2
-  - name: "Team"
-    url: "/team/"
-    weight: 3
   - name: "About"
     url: "/about/"
+    weight: 2
+  - name: "Publications"
+    url: "/services/"
+    weight: 3
+  - name: "Team"
+    url: "/team/"
     weight: 4
-  - name: "Contact"
-    url: "/contact/"
-    weight: 5
   - name: "Links"
     url: "/links/"
+    weight: 5
+  - name: "Contact"
+    url: "/contact/"
     weight: 6
 
 footer:

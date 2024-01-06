@@ -3,6 +3,7 @@ title: "Youtube"
 date: 2018-12-20T13:44:55+10:00
 image: "images/team/youtube_social_icon_red.png"
 jobtitle: "Experiment Videos"
+year: true
 weight: 4
 ---
 
