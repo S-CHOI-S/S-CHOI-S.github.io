@@ -5,8 +5,8 @@ main:
   - name: "Publications"
     url: "/publications/"
     weight: 3
-  - name: "Team"
-    url: "/team/"
+  - name: "Research"
+    url: "/research/"
     weight: 4
   - name: "Links"
     url: "/links/"

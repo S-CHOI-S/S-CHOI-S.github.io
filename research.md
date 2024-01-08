@@ -1,8 +1,8 @@
 ---
-title: About
+title: Research
 layout: page
-description: About
-permalink: /about/
+description: Research
+permalink: /research/
 bodyClass: page-about
 ---
 
