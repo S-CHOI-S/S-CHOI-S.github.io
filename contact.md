@@ -9,7 +9,7 @@ permalink: /contact/
 Every address is available!
 > **Personal Email:** jennychoi0904@gmail.com
 
-> **Business Email:** jennychoi0904@seoultech.ac.kr
+> **Business Email:** solchoi@kist.re.kr
 
 ---
 # Availability Hours
