@@ -51,7 +51,8 @@ Lorem markdownum aequalis strigis.
 - ROS Mirobot for Path Planning, Jan 2022 ~ June 2022
 
 # Awarded
-- Manipulator System Based on Compliance Control For Object Manipulation, Capstone Design Best Graduation Project Award, Seoul National University of Science and Technology, 2023
+- Development of Aerial Manipulator System for Object Manipulation, ST LINC 3.0 Fair, 2024
+- Development of Aerial Manipulator System for Object Manipulation, Capstone Design Best Graduation Project Award, Seoul National University of Science and Technology, 2023
 - Manipulator System Based on Compliance Control For Object Manipulation, Undergraduate Best Paper Award, Institute of Control, Robotics and Systems, 2023
 
 
