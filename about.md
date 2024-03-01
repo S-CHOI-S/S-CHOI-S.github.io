@@ -25,9 +25,8 @@ Lorem markdownum aequalis strigis.
 
 # Academic
 
-- M.S. Department of Mechanical Engineering, Yonsei University, 2024 ~ Present
-- B.S. Department of Mechanical System Design Engineering (Major), Seoul National University of Science and Technology, 2020 ~ 2024
-- B.S. Department of Semiconductor Convergence Engineering (Minor), Seoul National University of Science and Technology, 2020 ~ 2024
+- M.S. Candidate, Department of Mechanical Engineering, Yonsei University, 2024 ~ Present
+- B.S., Department of Mechanical System Design Engineering (Major), Seoul National University of Science and Technology, 2020 ~ 2024
 
 # Careers
 
@@ -51,7 +50,8 @@ Lorem markdownum aequalis strigis.
 - ROS Mirobot for Path Planning, Jan 2022 ~ June 2022
 
 # Awarded
-- Manipulator System Based on Compliance Control For Object Manipulation, Capstone Design Best Graduation Project Award, Seoul National University of Science and Technology, 2023
+- Development of Aerial Manipulator System for Object Manipulation, ST LINC 3.0 Fair, 2024
+- Development of Aerial Manipulator System for Object Manipulation, Capstone Design Best Graduation Project Award, Seoul National University of Science and Technology, 2023
 - Manipulator System Based on Compliance Control For Object Manipulation, Undergraduate Best Paper Award, Institute of Control, Robotics and Systems, 2023
 
 
