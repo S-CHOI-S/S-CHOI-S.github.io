@@ -1,5 +1,5 @@
-baseurl: '/'
-permalink: schois
+baseurl: 'https://s-choi-s.github.io/'
+permalink: pretty
 title: 'S-CHOI-S'
 
 logo:
