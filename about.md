@@ -2,60 +2,23 @@
 title: About
 layout: page
 description: About
-permalink: /about/
 bodyClass: page-about
 ---
 
-<style>
-  img {
-    margin-right: 50px;
-  }
-</style>
+Lorem markdownum aequalis strigis. _Saetigeri iubeas_, vultu huic alvum nondum
+de obside ut laniavit arbor palmis, cum quin. Rupes vetat videndo, armigerae
+crimen habet Priamum nec.
 
-<img align="left" src="/images/17-42_1.jpg" width="25%" height="25%"/>
+![Accounting Services](/images/thom-holmes-Lrfw0U_o9I0-unsplash.jpg)
 
-<br/><br/><br/>  
+# Objectives
 
-# **Sol Choi**
-#### S-CHOI-S
+Financial accounting and financial reporting are often used as synonyms.
 
-Lorem markdownum aequalis strigis.
+1. According to International Financial Reporting Standards: the objective of financial reporting is:
+2. To provide financial information that is useful to existing and potential investors, lenders and other creditors in making decisions about providing resources to the reporting entity.
+3. According to the European Accounting Association:
 
-<br/><br/><br/><br/>  
-
-# Academic
-
-- M.S. Candidate, Department of Mechanical Engineering, Yonsei University, 2024 ~ Present
-- B.S., Department of Mechanical System Design Engineering (Major), Seoul National University of Science and Technology, 2020 ~ 2024
-
-# Careers
-
-- Graduate Researcher of [Advanced Robot Control Lab.](https://sites.google.com/view/kist-arc/home){:style="color:inherit;"} in Korea Institute of Science and Technology (KIST), Mar 2024 ~ Present
-- Graduate Researcher of [Machine Learning and Control Systems Lab.](https://mlcs.yonsei.ac.kr/){:style="color:inherit;"} in Yonsei University, Jan 2024 ~ Present
-- Undergraduate Researcher of [Mobile Robotics Lab.](https://mrl.seoultech.ac.kr/index.do){:style="color:inherit;"} in Seoul National University of Science and Technology, Dec 2021 ~ Feb 2024
-
-# Research Topics
-- Mobile Robotics
-- Machine Learning
-- Control
-
-# Publications
-- **최솔**, 서세욱, 정상혁, and 이승제, "Manipulator System Based on Compliance Control For Object Manipulation," in 제어로봇시스템학회 국내학술대회 논문집, 2023, pp. 587-588. <span style="color:red">[Best Undergraduate Paper Award-Winner]</span>
-
-# Projects
-- Development of Aerial Manipulator System for Object Manipulation, Dec 2022 ~ Jan 2024
-- Augmented Reality Implementation through OCR Image Text Scanning, Dec 2022
-- Teleoperation of Haptic Manipulator Using Force Feedback Algorithm, Aug 2022 ~ Dec 2022
-- OpenMANIPULATOR-X for Battery Exchange System, June 2022 ~ Sep 2022
-- ROS Mirobot for Path Planning, Jan 2022 ~ June 2022
-
-# Awarded
-- Development of Aerial Manipulator System for Object Manipulation, ST LINC 3.0 Fair, 2024
-- Development of Aerial Manipulator System for Object Manipulation, Capstone Design Best Graduation Project Award, Seoul National University of Science and Technology, 2023
-- Manipulator System Based on Compliance Control For Object Manipulation, Undergraduate Best Paper Award, Institute of Control, Robotics and Systems, 2023
-
-
-<!--
 ## Relevance
 
 Relevance is the capacity of the financial information to influence the decision of its users. The ingredients of relevance are the predictive value and confirmatory value. Materiality is a sub-quality of relevance.
@@ -122,4 +85,3 @@ The balance sheet is the financial statement showing a firm's assets, liabilitie
 - goodwill
 
 Owner's equity, sometimes referred to as net assets, is represented differently depending on the type of business ownership. Business ownership can be in the form of a sole proprietorship, partnership, or a corporation. For a corporation, the owner's equity portion usually shows common stock, and retained earnings (earnings kept in the company). Retained earnings come from the retained earnings statement, prepared prior to the balance sheet.
--->

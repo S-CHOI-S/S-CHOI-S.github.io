@@ -1,6 +1,6 @@
 baseurl: '/'
 permalink: pretty
-title: 'S-CHOI-S'
+title: 'Jekyll Serif'
 
 logo:
   mobile: "images/logo/logo-mobile.svg"

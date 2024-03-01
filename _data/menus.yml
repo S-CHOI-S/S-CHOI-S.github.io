@@ -11,9 +11,6 @@ main:
   - name: "Contact"
     url: "/contact/"
     weight: 5
-  - name: "Publications"
-    url: "/publications/"
-    weight: 6
 
 footer:
   - name: "Home"
