@@ -66,7 +66,7 @@ PLATFORMS
   x86_64-linux-gnu
 
 DEPENDENCIES
-  jekyll (~> 4.3)
+  jekyll (~> 4.2)
   jekyll-environment-variables
   webrick (~> 1.7)
 
