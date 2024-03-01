@@ -9,7 +9,7 @@ permalink: /contact/
 Every address is available!
 > **Personal Email:** jennychoi0904@gmail.com
 
-> **Business Email:** solchoi@kist.re.kr
+> **Business Email:** solchoi@yonsei.ac.kr
 
 ---
 # Availability Hours

@@ -25,9 +25,8 @@ Lorem markdownum aequalis strigis.
 
 # Academic
 
-- M.S. Department of Mechanical Engineering, Yonsei University, 2024 ~ Present
-- B.S. Department of Mechanical System Design Engineering (Major), Seoul National University of Science and Technology, 2020 ~ 2024
-- B.S. Department of Semiconductor Convergence Engineering (Minor), Seoul National University of Science and Technology, 2020 ~ 2024
+- M.S. Candidate, Department of Mechanical Engineering, Yonsei University, 2024 ~ Present
+- B.S., Department of Mechanical System Design Engineering (Major), Seoul National University of Science and Technology, 2020 ~ 2024
 
 # Careers
 
