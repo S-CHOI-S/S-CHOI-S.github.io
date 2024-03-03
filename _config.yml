@@ -3,12 +3,12 @@ permalink: pretty
 title: 'S-CHOI-S'
 
 logo:
-  mobile: "images/logo/logo-mobile.svg"
+  mobile: "images/logo/schois_logo-mobile.png"
   mobile_height: "32px"
   mobile_width: "32px"
-  desktop: "images/logo/logo.svg"
-  desktop_height: "32px"
-  desktop_width: "120px"
+  desktop: "images/logo/schois_logo_italic.png"
+  desktop_height: "35px"
+  desktop_width: "180px"
 
 home: 
   limit_services: 6
