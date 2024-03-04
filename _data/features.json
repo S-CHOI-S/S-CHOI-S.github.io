@@ -1,25 +1,25 @@
 [
   {
-    "title": "Free Consultation",
-    "description": "New clients receive an obligation free consultation.",
+    "title": "Mobile Manipulation",
+    "description": "Optimal control for defined objectives, adaptive control for changing environments",
     "image": {
-      "url": "images/features/noun_branding_1885335.svg",
+      "url": "images/features/industrial-robot-svgrepo-com.svg",
       "width": 80,
       "height": 80
     }
   },
   {
-    "title": "Certified Accountants",
-    "description": "All members of our team are certified accountants.",
+    "title": "Machine Learning",
+    "description": "Optimal strategy development for task execution",
     "image": {
-      "url": "images/features/noun_The Process_1885341.svg",
+      "url": "images/features/machine-learning-03-svgrepo-com.png",
       "width": 80,
       "height": 80
     }
   },
   {
-    "title": "Tax Compliance",
-    "description": "We stay up to date on the latest changes to the tax code.",
+    "title": "Human-Robot Interaction",
+    "description": "Solutions for seamless human communication & collaboration",
     "image": {
       "url": "images/features/noun_3d modeling_1885342.svg",
       "width": 80,

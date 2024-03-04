@@ -12,6 +12,6 @@ show_call_box: true
 # S-CHOI-S
 # for Robotics & AI
 
-Serif contains content types for a typical business website. The theme is fully responsive, blazing fast and artfully illustrated.
-
-
+Impossible is not true, it's just suggestion  
+optimism always finds a way  
+<p align='right'>- Dennis Hong</p>
