@@ -1,12 +1,11 @@
 ---
 title: "Manipulator System Based on Compliance Control for Object Manipulation"
-image: "images/team/peter-van-eijk-711986-unsplash.jpg"
-author: "Director"
-linkedinurl: "https://www.linkedin.com/"
+date: 2018-12-20T13:44:55+10:00
+image: "images/publications/ICROS2023.png"
+externalurl: "https://www.dbpia.co.kr/Journal/articleDetail?nodeId=NODE11480475"
+authors: "최솔, 서세욱, 정상혁, 이승제 / 제어로봇시스템학회 국내학술대회 ICROS 2023"
 year: 2023
-weight: 1
+weight: 4
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+<span style="color:red">[Best Undergraduate Paper Award-Winner]</span>

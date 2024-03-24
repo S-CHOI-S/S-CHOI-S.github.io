@@ -5,7 +5,7 @@ description: Contact
 permalink: /contact/
 ---
   
-# Email
+# E-mail
 <u>Every address is available!</u>
 > **Personal Email:** jennychoi0904@gmail.com
 
