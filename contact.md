@@ -26,7 +26,7 @@ permalink: /contact/
 
 ---
 # Location
-Hitech Hall, Room 237, Seoul National University of Science and Technology, Nowon-gu, Seoul, Republic of Korea 01811
+Korea Institute of Science and Technology (KIST), Seongbuk-gu, Seoul, Republic of Korea 02792
 [![Location Map](https://maps.googleapis.com/maps/api/staticmap?center=37.601270,127.045309&zoom=16&size=1000x400&maptype=roadmap&markers=color:red%7Clabel:%7C37.601270,127.045309&key=AIzaSyAwRcJKwjIR8G7Pmh4EkbXBLl2Vfdyg3bM)](https://www.google.com/maps?q=37.601270,127.045309&hl=en&z=14)
 
 
