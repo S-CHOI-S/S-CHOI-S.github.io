@@ -27,7 +27,7 @@ permalink: /contact/
 ---
 # Location
 Korea Institute of Science and Technology (KIST), Seongbuk-gu, Seoul, Republic of Korea 02792
-[![Location Map](https://maps.googleapis.com/maps/api/staticmap?center=37.601270,127.045309&zoom=16&size=1000x400&maptype=roadmap&markers=color:red%7Clabel:%7C37.601270,127.045309&key=AIzaSyAwRcJKwjIR8G7Pmh4EkbXBLl2Vfdyg3bM)](https://www.google.com/maps?q=37.601270,127.045309&hl=en&z=14)
+[![Location Map](https://maps.googleapis.com/maps/api/staticmap?center=37.63207244873047,127.07633209228516&zoom=16&size=1000x400&maptype=roadmap&markers=color:red%7Clabel:%7C37.63207244873047,127.07633209228516&key=AIzaSyAwRcJKwjIR8G7Pmh4EkbXBLl2Vfdyg3bM)](https://www.google.com/maps?q=37.5665,126.9780&hl=en&z=14)
 
 
 
