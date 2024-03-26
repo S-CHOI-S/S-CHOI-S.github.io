@@ -1,7 +1,7 @@
 ---
 title: S-CHOI-S
 layout: home
-description: Welcome to S-CHOI-S: Robotics & AI personal website!
+description: "Welcome to S-CHOI-S: Robotics & AI personal website!"
 intro_image: "images/illustrations/home_background.gif"
 intro_image_absolute: true
 intro_image_hide_on_mobile: true
