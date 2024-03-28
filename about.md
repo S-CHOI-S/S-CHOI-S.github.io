@@ -30,9 +30,9 @@ Lorem markdownum aequalis strigis.
 
 # Careers
 
-- Graduate Researcher of [Advanced Robot Control Lab.](https://sites.google.com/view/kist-arc/home){:style="color:inherit;"} in Korea Institute of Science and Technology (KIST), Mar 2024 ~ Present
-- Graduate Researcher of [Machine Learning and Control Systems Lab.](https://mlcs.yonsei.ac.kr/){:style="color:inherit;"} in Yonsei University, Feb 2024 ~ Present
-- Undergraduate Researcher of [Mobile Robotics Lab.](https://mrl.seoultech.ac.kr/index.do){:style="color:inherit;"} in Seoul National University of Science and Technology, Dec 2021 ~ Feb 2024
+- Graduate Researcher of [Advanced Robot Control Lab.](https://sites.google.com/view/kist-arc/home){:style="color:inherit;"} in Korea Institute of Science and Technology (KIST), 2024 ~ Present
+- Graduate Researcher of [Machine Learning and Control Systems Lab.](https://mlcs.yonsei.ac.kr/){:style="color:inherit;"} in Yonsei University, 2024 ~ Present
+- Undergraduate Researcher of [Mobile Robotics Lab.](https://mrl.seoultech.ac.kr/index.do){:style="color:inherit;"} in Seoul National University of Science and Technology, 2021 ~ 2024
 
 # Research Topics
 - Mobile Robotics
