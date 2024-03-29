@@ -7,12 +7,12 @@ permalink: /contact/
   
 # E-mail
 <u>Every address is available!</u>
-> **Personal Email:** jennychoi0904@gmail.com
+> **Personal E-mail:** jennychoi0904@gmail.com
 
-> **Business Email:** solchoi@yonsei.ac.kr
+> **Business E-mail:** solchoi@yonsei.ac.kr
 
 ---
-# Availability Hours
+# Availability Hours (KST/UTC+09:00)
 
 | Day       | Availability Hours||||||||||||||||
 | --------- | ---------------- ||||||||||||||||
