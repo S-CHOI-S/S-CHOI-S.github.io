@@ -25,7 +25,7 @@ Lorem markdownum aequalis strigis.
 
 # Academic
 
-- M.S. Candidate, Department of Mechanical Engineering, Yonsei University, 2024 ~ Present
+- M.S. Candidate, School of Mechanical Engineering, Yonsei University, 2024 ~ Present
 - B.S., Department of Mechanical System Design Engineering, Seoul National University of Science and Technology, 2020 ~ 2024
 
 # Careers
@@ -35,9 +35,9 @@ Lorem markdownum aequalis strigis.
 - Undergraduate Researcher of [Mobile Robotics Lab.](https://mrl.seoultech.ac.kr/index.do){:style="color:inherit;"} in Seoul National University of Science and Technology, 2021 ~ 2024
 
 # Research Topics
-- Mobile Robotics
-- Machine Learning
-- Control
+- Mobile Robotics & Manipulation
+- Robot Learning
+- p-HRI (physical Human-Robot Interaction)
 
 # Publications
 - **최솔**, 서세욱, 정상혁, and 이승제, "Manipulator System Based on Compliance Control For Object Manipulation," in 제어로봇시스템학회 국내학술대회 논문집, 2023, pp. 587-588. <span style="color:red">[Best Undergraduate Paper Award-Winner]</span>

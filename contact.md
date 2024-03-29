@@ -12,7 +12,8 @@ permalink: /contact/
 > **Business E-mail:** solchoi@yonsei.ac.kr
 
 ---
-# Availability Hours (KST/UTC+09:00)
+# Availability Hours
+> KST/UTC+09:00
 
 | Day       | Availability Hours||||||||||||||||
 | --------- | ---------------- ||||||||||||||||
