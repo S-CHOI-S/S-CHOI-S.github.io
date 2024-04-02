@@ -19,7 +19,7 @@ bodyClass: page-about
 # **Sol Choi**
 #### S-CHOI-S
 
-Lorem markdownum aequalis strigis.
+Graduate Researcher in Robotics and Machine Learning
 
 <br/><br/><br/><br/>  
 
