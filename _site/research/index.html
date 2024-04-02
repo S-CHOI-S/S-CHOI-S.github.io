@@ -26,7 +26,7 @@
 
 </head>
 
-<body class='page page-basic'>
+<body class='page page-researches'>
   <div id="main-menu-mobile" class="main-menu-mobile">
   
   <ul>
@@ -99,17 +99,185 @@
 </div>
 
 
-    <div class="container pb-6 pt-6 pt-md-10 pb-md-10">
+    <style>
+    .tabs {
+        display: flex;
+    }
+
+    .tab-btn {
+        cursor: pointer;
+        padding: 15px 25px;
+        border: 3px solid #FF9B50;
+	border-bottom: none;
+        background-color: transparent;
+        color: black;
+	font-size: 18px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+	margin-right: 0.8em;
+    }
+
+    .tab-btn:hover {
+        background-color: rgba(255, 187, 92, 0.3);
+    }
+
+    .tab-content {
+        display: none;
+    }
+
+    .active {
+        display: block;
+    }
+</style>
+
+<div class="container pb-6 pt-6 pt-md-10 pb-md-10">
     <div class="row justify-content-start">
         <div class="col-12 col-md-10">
-            <div class="service service-single">
+            <div class="research research-single">
                 <h1 class="title">Research</h1>
                 <div class="content"><p>to be updated!</p>
 </div>
             </div>
         </div>
+
+<div class="col-12 col-md-10">
+    <div class="tabs">
+        
+        
+        <button class="tab-btn active" data-tab="tab1" style=" background-color: rgba(255, 187, 92, 0.3); ">Projects</button>
+        
+        
+        <button class="tab-btn" data-tab="tab2" style="">Research</button>
+        
+    </div>
+
+    
+    
+    <div id="tab1" class="tab-content active">
+	<br><br>
+        <h1>Projects</h1>
+        <style>
+    .year-title {
+	margin-top: 30px;
+	margin-bottom: 30px;
+    }
+
+    .section-title {
+        margin-top: 16px;
+    }
+</style>
+
+<!-- 2023Y -->
+<div class="year-title">
+    <h2><span style="color:#FF9B50">2023Y</span></h2>
+</div>
+
+<div class="section-title">
+    <a href="https://github.com/S-CHOI-S/D.A.S.O.M.git" style="color:inherit; text-decoration: none;">
+        <h3 onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">D.A.S.O.M</h3>
+    </a>
+</div>
+<p>Development of Aerial Manipulator System for Object Manipulation<br />
+<span style="color:#d1cfcf">Use Dynamixel from <a href="https://www.robotis.com/" style="text-decoration: underline; color:inherit;">ROBOTIS</a></span></p>
+
+<hr />
+
+<p><br /></p>
+
+<!-- 2022Y -->
+<div class="year-title">
+    <h2><span style="color:#FF9B50">2022Y</span></h2>
+</div>
+
+<div class="section-title">
+    <a href="https://github.com/S-CHOI-S/RosForMirobot-master.git" style="color:inherit; text-decoration: none;">
+        <h3 onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">ROS Mirobot for Path Planning</h3>
+    </a>
+</div>
+<p>ROS Mirobot for Path Planning<br />
+<span style="color:#d1cfcf">Use Mirobot from <a href="https://www.wlkata.com/" style="text-decoration: underline; color:inherit;">WLKATA</a> Robotics</span></p>
+
+<hr />
+
+<div class="section-title">
+    <a href="https://github.com/S-CHOI-S/OpenMANIPULATOR-master.git" style="color:inherit; text-decoration: none;">
+        <h3 onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">OpenMANIPULATOR-X for Battery Exchange System</h3>
+    </a>
+</div>
+<p>OpenMANIPULATOR-X for Path Planning<br />
+<span style="color:#d1cfcf">Use OpenMANIPULATOR-X from <a href="https://www.robotis.com/" style="text-decoration: underline; color:inherit;">ROBOTIS</a></span></p>
+
+<hr />
+
+<div class="section-title">
+    <a href="https://github.com/S-CHOI-S/Haptic_Manipulator.git" style="color:inherit; text-decoration: none;">
+        <h3 onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Haptic Manipulator</h3>
+    </a>
+</div>
+<p>Teleoperation of manipulator using force feedback<br />
+<span style="color:#d1cfcf">Use modified OpenMANIPULATOR-X from <a href="https://www.robotis.com/" style="text-decoration: underline; color:inherit;">ROBOTIS</a></span></p>
+
+<hr />
+
+<div class="section-title">
+    <a href="https://github.com/S-CHOI-S/ARucocr.git" style="color:inherit; text-decoration: none;">
+        <h3 onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">ARucocr</h3>
+    </a>
+</div>
+<p>Augmented reality implementation through OCR image text scanning<br />
+<span style="color:#d1cfcf">OCR + Aruco detection + AR</span></p>
+
+<hr />
+
+    </div>
+    
+    
+    <div id="tab2" class="tab-content">
+	<br><br>
+        <h1>Research</h1>
+        <h2 id="this-is-a-subpage-research">This is a subpage research</h2>
+
+<p>Welcome to my subpage!</p>
+
+
+    </div>
+    
+</div>
+
+
+
+
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const tabBtns = document.querySelectorAll(".tab-btn");
+        const tabContents = document.querySelectorAll(".tab-content");
+
+        tabBtns.forEach(function(tabBtn, index) {
+            tabBtn.addEventListener("click", function() {
+                const tabId = this.getAttribute("data-tab");
+
+                tabBtns.forEach(function(btn) {
+                    btn.classList.remove("active");
+                    btn.style.backgroundColor = ''; // 클릭 해제 시 배경색 초기화
+                });
+                tabContents.forEach(function(tabContent) {
+                    tabContent.classList.remove("active");
+                });
+
+                this.classList.add("active");
+                this.style.backgroundColor = 'rgba(255, 187, 92, 0.3)'; // 클릭된 버튼에 배경색 적용
+                document.getElementById(tabId).classList.add("active");
+            });
+
+            if (index === tabBtns.length - 1) {
+                tabBtn.classList.add("last");
+            }
+        });
+    });
+</script>
 
   </div>
   <div class="footer">

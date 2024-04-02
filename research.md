@@ -1,9 +1,8 @@
 ---
 title: Research
-layout: page
+layout: researches
 description: Research
 permalink: /research/
-bodyClass: page-about
 ---
 
 to be updated!

@@ -1,0 +1,97 @@
+---
+layout: default
+bodyClass: "page-researches"
+---
+
+<style>
+    .tabs {
+        display: flex;
+    }
+
+    .tab-btn {
+        cursor: pointer;
+        padding: 15px 25px;
+        border: 3px solid #FF9B50;
+	border-bottom: none;
+        background-color: transparent;
+        color: black;
+	font-size: 18px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+	margin-right: 0.8em;
+    }
+
+    .tab-btn:hover {
+        background-color: rgba(255, 187, 92, 0.3);
+    }
+
+    .tab-content {
+        display: none;
+    }
+
+    .active {
+        display: block;
+    }
+</style>
+
+<div class="container pb-6 pt-6 pt-md-10 pb-md-10">
+    <div class="row justify-content-start">
+        <div class="col-12 col-md-10">
+            <div class="research research-single">
+                <h1 class="title">{{ page.title }}</h1>
+                <div class="content">{{ content }}</div>
+            </div>
+        </div>
+
+<div class="col-12 col-md-10">
+    <div class="tabs">
+        {% for research in site.team %}
+        {% assign tab_index = forloop.index %}
+        <button class="tab-btn{% if tab_index == 1 %} active{% endif %}" data-tab="tab{{ tab_index }}" style="{% if tab_index == 1 %} background-color: rgba(255, 187, 92, 0.3); {% endif %}">{{ research.title }}</button>
+        {% endfor %}
+    </div>
+
+    {% for research in site.team %}
+    {% assign tab_index = forloop.index %}
+    <div id="tab{{ tab_index }}" class="tab-content{% if tab_index == 1 %} active{% endif %}">
+	<br><br>
+        <h1>{{ research.title }}</h1>
+        {{ research.content }}
+    </div>
+    {% endfor %}
+</div>
+
+
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const tabBtns = document.querySelectorAll(".tab-btn");
+        const tabContents = document.querySelectorAll(".tab-content");
+
+        tabBtns.forEach(function(tabBtn, index) {
+            tabBtn.addEventListener("click", function() {
+                const tabId = this.getAttribute("data-tab");
+
+                tabBtns.forEach(function(btn) {
+                    btn.classList.remove("active");
+                    btn.style.backgroundColor = ''; // 클릭 해제 시 배경색 초기화
+                });
+                tabContents.forEach(function(tabContent) {
+                    tabContent.classList.remove("active");
+                });
+
+                this.classList.add("active");
+                this.style.backgroundColor = 'rgba(255, 187, 92, 0.3)'; // 클릭된 버튼에 배경색 적용
+                document.getElementById(tabId).classList.add("active");
+            });
+
+            if (index === tabBtns.length - 1) {
+                tabBtn.classList.add("last");
+            }
+        });
+    });
+</script>
