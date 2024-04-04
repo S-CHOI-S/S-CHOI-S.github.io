@@ -1,13 +1,11 @@
 ---
-title: "Business Sales"
-date: 2019-01-28T15:15:26+10:00
-weight: 2
+title: "Robot Dynamics"
+date: 2018-11-18T12:33:46+10:00
+weight: 1
+truncate: 75
 ---
 
-Cyanee nec pedicis positi. Esse et diem forte quoque et ieiunia
-vixque dixit negari _ullis stamina_: trahit. Tanta rictus in mitia causa, Phoebo
-nisi mater acta serpens cacumen dapibus caeli umidus detegeret viri conlato
-cadet
+Dynamics Modeling and Control for Multi-joint Robots and Mobile Robots
 
 ![Accounting Services](/images/austin-distel-nGc5RT2HmF0-unsplash.jpg)
 
