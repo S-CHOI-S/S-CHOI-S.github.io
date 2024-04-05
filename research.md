@@ -5,4 +5,6 @@ description: Research
 permalink: /research/
 ---
 
-to be updated!
+Click on each title to see more details!
+
+The detailed content includes photos/videos related to the research, along with brief explanations!

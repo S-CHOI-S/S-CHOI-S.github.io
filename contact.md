@@ -15,15 +15,15 @@ permalink: /contact/
 # Availability Hours
 > KST/UTC+09:00
 
-| Day       | Availability Hours||||||||||||||||
-| --------- | ---------------- ||||||||||||||||
-| Monday    | 10:00am - 7:00pm ||||||||||||||||
-| Tuesday   | 10:00am - 7:00pm ||||||||||||||||
-| Wednesday | 10:00am - 7:00pm ||||||||||||||||
-| Thursday  | 10:00am - 7:00pm ||||||||||||||||
-| Friday    | 10:00am - 7:00pm ||||||||||||||||
-| Saturday  | 10:00am - 7:00pm ||||||||||||||||
-| Sunday    | Closed           ||||||||||||||||
+| Day       | Availability Hours ||||||||
+| --------- | ------------------ ||||||||
+| Monday    | 10:00am - 7:00pm   ||||||||
+| Tuesday   | 10:00am - 7:00pm   ||||||||
+| Wednesday | 10:00am - 7:00pm   ||||||||
+| Thursday  | 10:00am - 7:00pm   ||||||||
+| Friday    | 10:00am - 7:00pm   ||||||||
+| Saturday  | 10:00am - 7:00pm   ||||||||
+| Sunday    | Closed             ||||||||
 
 ---
 # Location
