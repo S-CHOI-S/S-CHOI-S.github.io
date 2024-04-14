@@ -1,7 +1,7 @@
 ---
 title: S-CHOI-S
 layout: home
-description: Welcome!
+description: Welcome! Here is S-CHOI-S gitblog page! I dived into ROBOTICS and ROBOT RL!
 intro_image: "images/illustrations/home_background.gif"
 intro_image_absolute: true
 intro_image_hide_on_mobile: true
