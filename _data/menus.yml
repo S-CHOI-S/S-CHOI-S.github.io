@@ -8,12 +8,15 @@ main:
   - name: "Research"
     url: "/research/"
     weight: 4
+  - name: "Journey"
+    url: "/journey/"
+    weight: 5
   - name: "Links"
     url: "/links/"
-    weight: 5
+    weight: 6
   - name: "Contact"
     url: "/contact/"
-    weight: 6
+    weight: 7
 
 footer:
   - name: "Home"
