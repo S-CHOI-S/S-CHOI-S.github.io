@@ -35,7 +35,7 @@ Reinforcement Learning with the Franka Emika Panda
     </a>
 </div>
 Developing an Adaptive Locomotion Strategy for a Quadruped Robot  
-<span style="color:#d1cfcf">Use <a href="https://raisim.com/" style="text-decoration: underline; color:inherit;">RaiSim</a> & A1 from <a href="https://www.unitree.com/" style="text-decoration: underline; color:inherit;">Unitree</a></span>
+<span style="color:#d1cfcf">Use <a href="https://raisim.com/" style="text-decoration: underline; color:inherit;">RaiSim</a> & A1 from <a href="https://www.unitree.com/" style="text-decoration: underline; color:inherit;">Unitree</a> Robotics</span>
 
 ---
 
