@@ -1,6 +1,7 @@
 ---
 layout: research
-title: Projects
+label: Projects
+title: Personal Projects
 ---
 
 <style>

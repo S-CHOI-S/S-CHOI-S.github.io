@@ -1,5 +1,6 @@
 ---
 layout: research
+label: Research
 title: Research
 ---
 

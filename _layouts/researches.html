@@ -47,7 +47,7 @@ bodyClass: "page-researches"
     <div class="tabs">
         {% for research in site.team %}
         {% assign tab_index = forloop.index %}
-        <button class="tab-btn{% if tab_index == 1 %} active{% endif %}" data-tab="tab{{ tab_index }}" style="{% if tab_index == 1 %} background-color: rgba(255, 187, 92, 0.3); {% endif %}">{{ research.title }}</button>
+        <button class="tab-btn{% if tab_index == 1 %} active{% endif %}" data-tab="tab{{ tab_index }}" style="{% if tab_index == 1 %} background-color: rgba(255, 187, 92, 0.3); {% endif %}">{{ research.label }}</button>
         {% endfor %}
     </div>
 
