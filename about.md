@@ -50,6 +50,7 @@ Graduate Researcher in Robotics and Machine Learning
 - ROS Mirobot for Path Planning, Jan 2022 ~ June 2022
 
 # Awarded
+- RL-based Robust Walking Control for Human-like Humanoid Robots to Overcome Unstructured Environments, KIST AIR Best Paper Award, 2024
 - Development of Aerial Manipulator System for Object Manipulation, ST LINC 3.0 Fair, 2024
 - Development of Aerial Manipulator System for Object Manipulation, Capstone Design Best Graduation Project Award, Seoul National University of Science and Technology, 2023
 - Manipulator System Based on Compliance Control For Object Manipulation, Undergraduate Best Paper Award, Institute of Control, Robotics and Systems, 2023
