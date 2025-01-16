@@ -9,10 +9,19 @@
     }
   },
   {
-    "title": "Machine Learning",
+    "title": "Machine<br>Learning",
     "description": "Optimal strategy development for task execution",
     "image": {
       "url": "images/features/machine-learning-03-svgrepo-com.png",
+      "width": 80,
+      "height": 80
+    }
+  },
+   {
+    "title": "Humanoid",
+    "description": "Optimal control for defined objectives, adaptive control for changing environments",
+    "image": {
+      "url": "images/features/humanoid.png",
       "width": 80,
       "height": 80
     }
