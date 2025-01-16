@@ -1,5 +1,5 @@
 ---
-title: S-CHOI-S
+title: S-CHOI-S [Humanoid RL Researcher]
 layout: home
 description: Welcome! Here is S-CHOI-S gitblog page! I dived into ROBOTICS and ROBOT RL!
 intro_image: "images/illustrations/home_background.gif"
