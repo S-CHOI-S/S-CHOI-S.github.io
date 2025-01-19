@@ -37,7 +37,7 @@ Graduate Researcher in Robotics and Machine Learning
 # Research Topics
 - Mobile Robotics & Manipulation
 - Humanoid
-- Locomanipulation
+- Loco-manipulation
 - Robot Learning
 - p-HRI (physical Human-Robot Interaction)
 

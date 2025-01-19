@@ -19,9 +19,9 @@
   },
    {
     "title": "Humanoid",
-    "description": "Optimal control for defined objectives, adaptive control for changing environments",
+    "description": "A generalized and optimal control solution for loco-manipulation across various tasks",
     "image": {
-      "url": "images/features/humanoid.png",
+      "url": "images/features/humanoid.svg",
       "width": 80,
       "height": 80
     }
