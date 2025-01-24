@@ -8,5 +8,10 @@
     "name": "Twitter",
     "link": "https://s-choi-s.github.io/",
     "image": "images/social/twitter.svg"
+  },
+  {
+    "name": "CV",
+    "link": "https://s-choi-s.github.io/",
+    "image": "images/social/cv.png"
   }
 ]
