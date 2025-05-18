@@ -42,6 +42,7 @@ Graduate Researcher in Robotics and Machine Learning
 - p-HRI (physical Human-Robot Interaction)
 
 # Publications
+- Y. Kim, **S. Choi**, B. You, K. Jang, and Y. Lee, “Subspace-wise hybrid RL for articulated object manipulation,” arXiv preprint arXiv:2412.08522, 2024.
 - **최솔**, 서세욱, 정상혁, and 이승제, "Manipulator System Based on Compliance Control For Object Manipulation," in 제어로봇시스템학회 국내학술대회 논문집, 2023, pp. 587-588. <span style="color:red">[Best Undergraduate Paper Award-Winner]</span>
 
 # Projects
