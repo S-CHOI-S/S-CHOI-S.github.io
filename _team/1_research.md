@@ -17,7 +17,7 @@ title: Research
 
 <!-- 2025Y -->
 <div class="year-title">
-    <h2><span style="color:#FF9B50">2024Y</span></h2>
+    <h2><span style="color:#FF9B50">2025Y</span></h2>
 </div>
 
 ### Physically Plausible Humanoid Motion Generation on Real Hardware

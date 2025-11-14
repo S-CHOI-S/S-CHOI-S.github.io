@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>{% if page.title %}{{page.title}}{% else %}{{ site.title | escape }}{% endif %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" href="{{ '/images/bs.png' | relative_url }}">
+  
+  <!-- Font Awesome 6 CDN -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+  
+  <link href="{{ '/assets/css/style.css' | relative_url }}" rel="stylesheet">
+
+  <style>
+    .intro {
+      padding: 80px 0 20px 0;
+      text-align: center !important;
+      font-style: normal !important;
+      font-family: 'Noto Sans', sans-serif;
+    }
+
+    .intro .title {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-align: center !important;
+      display: block;
+      width: 100%;
+      font-style: normal !important;
+      font-family: 'Noto Sans', sans-serif;
+    }
+
+    .content-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 40px 60px 40px;
+      text-align: left;
+      font-style: normal !important;
+      font-family: 'Noto Sans', sans-serif;
+    }
+
+    @media (max-width: 768px) {
+      .intro {
+        padding: 60px 0 20px 0;
+      }
+
+      .intro .title {
+        font-size: 2rem;
+      }
+
+      .content-wrapper {
+        padding: 20px 20px 40px 20px;
+      }
+    }
+
+    .kistg1 {
+      padding: 40px 0;
+      font-style: normal !important;
+      font-family: 'Noto Sans', sans-serif;
+      text-align: center !important;
+    }
+
+    .publication-title {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      font-style: normal !important;
+      font-family: 'Noto Sans', sans-serif;
+    }
+
+    .publication-authors {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      font-style: normal !important;
+      font-family: 'Noto Sans', sans-serif;
+    }
+
+    .publication-links a {
+      margin-right: 15px;
+      font-size: 1.1rem;
+      font-style: normal !important;
+      font-family: 'Noto Sans', sans-serif;
+    }
+
+    .publication-links .icon {
+      margin-right: 5px;
+      font-style: normal !important;
+      font-family: 'Noto Sans', sans-serif;
+    }
+
+    .kistg1 .is-size-4 {
+      color: #555;
+      margin-top: 10px;
+      font-style: normal !important;
+      font-family: 'Noto Sans', sans-serif;
+    }
+
+    .kistg1 img {
+      height: 100px;
+      font-style: normal !important;
+      font-family: 'Noto Sans', sans-serif;
+    }
+
+  </style>
+
+  {% if page.description %}<meta name="description" content="{{ page.description }}" />{% endif %}
+  {% if page.meta_title %}<meta property="og:title" content="{{ page.meta_title }}"/>{% else %}<meta property="og:title" content="{{ page.title }}"/>{% endif %}
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="{{ url }}"/>
+  {% if page.image %}<meta property="og:image" content="{{ page.image | absolute_url }}"/>{% endif %}
+  {% if page.description %}<meta property="og:description" content="{{ page.description }}"/>{% endif %}
+  <meta name="twitter:card" content="summary"/>
+  {% if site.data.seo.meta_twitter_site %}<meta name="twitter:site" content="{{ site.seo.meta_twitter_site }}"/>{% endif %}
+  {% if site.data.seo.meta_twitter_creator %}<meta name="twitter:creator" content="{{ site.seo.meta_twitter_creator }}"/>{% endif %}
+
+</head>
+
+<body class='page {{layout.bodyClass}}'>
+  <div id="wrapper" class="wrapper">
+    <div class="container">
+
+      <!-- kistg1 Section: Publication Title and Authors -->
+      <section class="kistg1">
+        <div class="kistg1-body">
+          <div class="container is-max-desktop">
+            <div class="columns is-centered">
+              <div class="column has-text-centered">
+                <h1 class="title publication-title">KIST G1-29DoF: Modular Lower Body Walking Policy <br>for Flexible Wholebody Control</h1>
+                <div class="is-size-4 publication-authors">
+                  <span class="author-block">
+                    <a href="https://s-choi-s.github.io/" target="_blank" style="color: #FF9B50;">Sol Choi</a><sup>1, 2</sup></span>
+                  <span class="author-block">
+                    <a href="https://sites.google.com/view/kist-arc/home/" target="_blank" style="color: #FF9B50;">Yisoo Lee</a><sup>1&dagger;</sup></span>
+                </div>
+                <div class="is-size-4 publication-authors" style="font-size: 1.1rem;">
+                  <span class="author-block">
+                    Korea Institute of Science and Technology (KIST)<sup>1</sup>,<br> 
+                    Yonsei University<sup>2</sup><br></span>
+                </div>
+
+                <!-- Affiliations Logos -->
+                <div class="is-flex is-justify-content-center is-align-items-center" style="gap: 2rem; flex-wrap: wrap; margin-top: 1rem;">
+                  <img src="/images/logo/kist.png" alt="KIST" style="height: 80px;">
+                  <img src="/images/logo/yonsei_full.jpg" alt="YONSEI" style="height: 80px;">
+                </div>
+
+                <br>
+
+                <div class="column has-text-centered">
+                  <div class="publication-links">
+                    <!-- Arxiv PDF link -->
+                    <span class="link-block">
+                      <a href="https://github.com/YOUR REPO HERE" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark" style="border-radius: 25px;">
+                      <span class="icon">
+                        <i class="fa-solid fa-snowflake"></i>
+                      </span>
+                      <span style="font-size: 1.0rem;">Policy</span>
+                    </a>
+                    </span>
+
+                    <!-- Github link -->
+                    <span class="link-block">
+                      <a href="https://github.com/YOUR REPO HERE" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark" style="border-radius: 25px;">
+                      <span class="icon">
+                        <i class="fab fa-github"></i>
+                      </span>
+                      <span style="font-size: 1.0rem;">Code</span>
+                    </a>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+    </div>
+  </div>
+
+  {% include footer.html %}
+  {% include sub-footer.html %}
+  <script type="text/javascript" src="{{ '/assets/js/scripts.js' | relative_url }}"></script>
+  {% include google-analytics.html %}
+</body>
+</html>
