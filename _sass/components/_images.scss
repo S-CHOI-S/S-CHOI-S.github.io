@@ -1,0 +1,28 @@
+// Responsive media defaults.
+//
+// The project only imports `bootstrap/bootstrap-grid`, which does not ship
+// `_images.scss`. Every `class="img-fluid"` in the layouts was therefore a
+// no-op, so images kept the fixed pixel size of their `width`/`height`
+// attributes and overflowed on narrow viewports instead of scaling down.
+img,
+svg,
+video {
+  max-width: 100%;
+}
+
+img,
+video {
+  height: auto;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+// Embeds sized with a `width`/`height` attribute (CV preview, video cards).
+iframe,
+embed,
+object {
+  max-width: 100%;
+}

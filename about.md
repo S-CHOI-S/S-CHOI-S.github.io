@@ -7,25 +7,54 @@ bodyClass: page-about
 ---
 
 <style>
-  img {
-    margin-right: 50px;
+  .about-header {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 40px;
+  }
+
+  .about-header img {
+    flex: 0 0 25%;
+    width: 25%;
+    height: auto;
+  }
+
+  .about-header h1,
+  .about-header h4 {
+    margin-top: 0;
+  }
+
+  /* Stack the photo above the name on phones. */
+  @media (max-width: 767px) {
+    .about-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .about-header img {
+      flex: 0 0 auto;
+      width: 60%;
+      max-width: 240px;
+      align-self: center;
+    }
   }
 </style>
 
-<img align="left" src="/images/17-42_1.jpg" width="25%" height="25%"/>
-
-<br/><br/><br/>  
-
-# **Sol Choi**
-#### S-CHOI-S
-
-Graduate Researcher in Robotics and Machine Learning
-
-<br/><br/><br/><br/>  
+<div class="about-header">
+  <img src="/images/17-42_1.jpg" alt="Sol Choi" />
+  <div class="about-intro">
+    <h1><strong>Sol Choi</strong></h1>
+    <h4>S-CHOI-S</h4>
+    <p>Graduate Researcher in Robotics and Machine Learning</p>
+  </div>
+</div>
 
 # Academic
 
-- M.S. Candidate, School of Mechanical Engineering, Yonsei University, 2024 ~ Present
+- Ph.D. Candidate, School of Mechanical Engineering, Yonsei University, 2026 ~ Present
+- M.S., School of Mechanical Engineering, Yonsei University, 2024 ~ 2026
 - B.S., Department of Mechanical System Design Engineering, Seoul National University of Science and Technology, 2020 ~ 2024
 
 # Careers

@@ -118,6 +118,8 @@
     <style>
     .tabs {
         display: flex;
+        flex-wrap: wrap;
+        row-gap: 0.5em;
     }
 
     .tab-btn {
@@ -177,6 +179,20 @@
     .description {
     font-size: 0.95em;
     color: #333;
+    }
+
+    /* Tab strip has to shrink rather than push the page sideways on phones. */
+    @media (max-width: 767px) {
+        .tab-btn {
+            padding: 10px 14px;
+            font-size: 15px;
+            margin-right: 0.4em;
+        }
+
+        .video-card {
+            padding: 0.6rem;
+            margin-bottom: 2.5rem;
+        }
     }
 </style>
 

@@ -7,7 +7,8 @@ bodyClass: "page-publications"
   .publications-box {
       margin-top: -70px;
       margin-bottom: 0px;
-      width: 1200px;
+      width: 100%;
+      max-width: 1200px;
   }
 
   .image-container {
@@ -15,6 +16,12 @@ bodyClass: "page-publications"
       margin-left: 1em;
       margin-bottom: 0em;
       flex: 1;
+  }
+
+  .image-container img {
+      width: 100%;
+      max-width: 280px;
+      height: auto;
   }
 
   .text-container {
@@ -29,9 +36,48 @@ bodyClass: "page-publications"
       line-height: 1.2;
   }
 
+  /* Preserve the narrower thumbnail the older entries used. */
+  .publications-box:not(.core) .image-container img {
+      max-width: 230px;
+  }
+
   .publications-box.core {
-      width: 1200px;
-      height: 270px;
+      min-height: 270px;
+  }
+
+  /* Stack the image above the text once the two columns no longer fit. */
+  @media (max-width: 767px) {
+      .publications-box,
+      .publications-box.core {
+          margin-top: 0;
+          min-height: 0;
+          flex-direction: column;
+          align-items: stretch !important;
+      }
+
+      .image-container {
+          margin: 0.5em 0 0 0;
+          justify-content: center;
+      }
+
+      .publications-box .image-container img,
+      .publications-box:not(.core) .image-container img {
+          max-width: 100%;
+      }
+
+      .text-container {
+          margin-top: 0;
+      }
+
+      .text-section {
+          margin-left: 0;
+          margin-right: 0;
+          padding: 0 0.8em;
+      }
+
+      .text-section h2 {
+          font-size: 22px;
+      }
   }
 </style>
 
@@ -39,6 +85,35 @@ bodyClass: "page-publications"
     <div class="container text-center">
         <h1 class="title">{{page.title}}</h1>
         <div class="content">{{content}}</div>
+    </div>
+</div>
+
+<div class="year">
+	<div class="container text-center">
+		<h1>2026Y</h1>
+	</div>
+</div>
+
+<div class="container pt-6 pb-6 pt-md-10 pb-md-10">
+    <div class="row">
+        <div class="publications-box core" style='padding:0.1em; background-color:#FFFFFF; border: solid #FFBB5C 3px; border-radius: 10px; display: flex; align-items: center;'>
+            <div class="image-container" style="flex: 1; display: flex; align-items: left;">
+                <img class="img-fluid mb-2" src="/images/rgb.png" style='border-radius: 10px;'/>
+            </div>
+            <div class="text-container" style="flex: 2; display: flex; align-items: left;">
+                <div class="text-section">
+		    <h2><a href="https://arxiv.org/abs/2606.25123">RGB: RL Guided Whole-Body MPPI for Humanoid Control</a></h2> 
+            <p style="font-size: 16px;">
+            Yunsoo Seo, <strong><u></u>Sol Choi</u></strong>, Euncheol Im, Myo Taeg Lim, Yisoo Lee <br>
+            arXiv preprint arXiv:2606.25123 <br>
+			<!--<span style="color:green;">[Manuscript Submitted]</span>-->
+			<a href="https://arxiv.org/abs/2606.25123">[paper]</a>
+			<!-- <a href="https://tmjeong1103.github.io/CoRe/">[page]</a> -->
+			<!-- <a href="https://github.com/tmjeong1103/RIMKit.git">[code]</a> -->
+            </p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -52,7 +127,7 @@ bodyClass: "page-publications"
     <div class="row">
         <div class="publications-box core" style='padding:0.1em; background-color:#FFFFFF; border: solid #FFBB5C 3px; border-radius: 10px; display: flex; align-items: center;'>
             <div class="image-container" style="flex: 1; display: flex; align-items: left;">
-                <img width="280" height="184" class="img-fluid mb-2" src="/images/core.png" style='border-radius: 10px;'/>
+                <img class="img-fluid mb-2" src="/images/core.png" style='border-radius: 10px;'/>
             </div>
             <div class="text-container" style="flex: 2; display: flex; align-items: left;">
                 <div class="text-section">
@@ -63,7 +138,7 @@ bodyClass: "page-publications"
 			<!--<span style="color:green;">[Manuscript Submitted]</span>-->
 			<a href="https://ieeexplore.ieee.org/abstract/document/11203055">[paper]</a>
 			<a href="https://tmjeong1103.github.io/CoRe/">[page]</a>
-			<!-- <a href="https://S-CHOI-S.github.io/publications">[code]</a> -->
+			<a href="https://github.com/tmjeong1103/RIMKit.git">[code]</a>
             </p>
                 </div>
             </div>
@@ -81,13 +156,14 @@ bodyClass: "page-publications"
     <div class="row">
         <div class="publications-box" style='padding:0.1em; background-color:#FFFFFF; border: solid #FFBB5C 3px; border-radius: 10px; display: flex; align-items: center;'>
             <div class="image-container" style="flex: 1; display: flex; align-items: left;">
-                <img width="230" height="184" class="img-fluid mb-2" src="/images/artom.png" style='border-radius: 10px;'/>
+                <img class="img-fluid mb-2" src="/images/artom.png" style='border-radius: 10px;'/>
             </div>
             <div class="text-container" style="flex: 2; display: flex; align-items: left;">
                 <div class="text-section">
 		    <h2><a href="https://arxiv.org/abs/2412.08522">Subspace-wise Hybrid RL for Articulated Object Manipulation</a></h2> <br>
             <p style="font-size: 16px;">
 			Yujin Kim, <strong><u>Sol Choi</u></strong>, Bum-Jae You, Keunwoo Jang, and Yisoo Lee <br>
+            arXiv preprint arXiv:2412.08522 <br>
 			<!--<span style="color:green;">[Manuscript Submitted]</span>-->
 			<a href="https://arxiv.org/abs/2412.08522">[paper]</a>
 			<a href="https://youtu.be/PkNxv0P8Atk?si=-uqdoonSskPeyFdZ">[video]</a>
@@ -109,7 +185,7 @@ bodyClass: "page-publications"
     <div class="row">
         <div class="publications-box" style='padding:0.1em; background-color:#FFFFFF; border: solid #FFBB5C 3px; border-radius: 10px; display: flex; align-items: center;'>
             <div class="image-container" style="flex: 1; display: flex; align-items: left;">
-                <img width="230" height="184" class="img-fluid mb-2" src="/images/icros2023.png" style='border-radius: 10px;'/>
+                <img class="img-fluid mb-2" src="/images/icros2023.png" style='border-radius: 10px;'/>
             </div>
             <div class="text-container" style="flex: 2; display: flex; align-items: left;">
                 <div class="text-section">
