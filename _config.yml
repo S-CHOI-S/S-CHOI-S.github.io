@@ -1,4 +1,5 @@
 baseurl: '/'
+port: 5656
 permalink: pretty
 title: 'S-CHOI-S'
 
