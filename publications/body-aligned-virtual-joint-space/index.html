@@ -1,0 +1,524 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Reusing Locomotion Training Recipes Across Humanoids via Body-Aligned Virtual Joints</title>
+<meta name="description" content="A body-aligned virtual joint interface that lets one unmodified locomotion training recipe work across humanoids with different leg-axis layouts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light;
+  --canvas: #F6F7F9;
+  --surface-1: #FFFFFF;
+  --surface-2: #ECEEF2;
+  --hairline: #DADDE3;
+  --hairline-strong: #C3C8D0;
+  --ink: #0D0E11;
+  --ink-muted: #4A505A;
+  --ink-subtle: #6A707A;
+  --accent: #5B4DE0;
+  --accent-text: #4A3CCF;
+  --accent-wash: #EEEBFF;
+  --on-accent: #FFFFFF;
+  --plate: #FFFFFF;
+  --failure: #C8402F;
+
+  --f-display: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --f-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --wrap: 1120px;
+  --gutter: clamp(20px, 4vw, 48px);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --canvas: #0D0E11; --surface-1: #16181C; --surface-2: #1E2126;
+    --hairline: #2A2E35; --hairline-strong: #3A404A;
+    --ink: #F2F4F7; --ink-muted: #A8AEB8; --ink-subtle: #868C96;
+    --accent: #7A6CF5; --accent-text: #B0A6FF; --accent-wash: #1A1730; --on-accent: #FFFFFF;
+    --plate: #FFFFFF; --failure: #E85C4F;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --canvas: #0D0E11; --surface-1: #16181C; --surface-2: #1E2126;
+  --hairline: #2A2E35; --hairline-strong: #3A404A;
+  --ink: #F2F4F7; --ink-muted: #A8AEB8; --ink-subtle: #868C96;
+  --accent: #7A6CF5; --accent-text: #B0A6FF; --accent-wash: #1A1730; --on-accent: #FFFFFF;
+  --plate: #FFFFFF; --failure: #E85C4F;
+}
+*, *::before, *::after { box-sizing: inherit; }
+html { scroll-padding-top: env(safe-area-inset-top, 0px); -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--canvas); color: var(--ink);
+  font-family: var(--f-body); font-size: 17px; line-height: 1.6; font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--accent-text); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+section { padding: 72px 0; border-top: 1px solid var(--hairline); }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 600; margin: 0; }
+h2 { font-size: clamp(28px, 3.4vw, 40px); line-height: 1.1; letter-spacing: -0.02em; max-width: 22ch; }
+h3 { font-size: 20px; font-weight: 500; letter-spacing: -0.01em; }
+p { margin: 0; }
+.lead { color: var(--ink-muted); font-size: 18px; max-width: 68ch; margin-top: 16px; }
+.mono { font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.06em; font-weight: 500; }
+.nw { white-space: nowrap; }
+.tnum { font-variant-numeric: tabular-nums; }
+
+/* ---------- Hero ---------- */
+.hero { padding: 56px 0 64px; }
+.venue { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; color: var(--ink-muted); font-size: 15px; line-height: 1.4; }
+.venue img { height: 30px; width: auto; background: #fff; border-radius: 6px; padding: 4px 8px; }
+.venue:hover span { color: var(--ink); }
+h1 {
+  font-size: clamp(38px, 6.2vw, 76px); line-height: 1.02; letter-spacing: -0.035em;
+  margin-top: 28px; max-width: 21ch; text-wrap: balance;
+}
+.authors { margin-top: 28px; font-size: 19px; font-weight: 500; line-height: 1.5; }
+.authors sup, .affil sup { font-size: 0.62em; margin-left: 1px; color: var(--ink-muted); font-weight: 500; }
+.affil { margin-top: 8px; color: var(--ink-muted); font-size: 15px; display: flex; flex-wrap: wrap; gap: 4px 20px; }
+.notes { margin-top: 6px; color: var(--ink-subtle); font-size: 14px; }
+.links { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 10px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px; border-radius: 999px;
+  font-weight: 500; font-size: 15px; text-decoration: none; color: var(--ink);
+  background: var(--surface-1); border: 1px solid var(--hairline-strong);
+}
+.btn:hover { border-color: var(--ink-muted); }
+.btn.is-pending { color: var(--ink-subtle); border-style: dashed; cursor: default; }
+.btn .soon { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.06em; color: var(--ink-subtle); }
+
+/* ---------- Axis comparison (signature element) ---------- */
+.compare { margin-top: 56px; }
+.compare-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px 24px; margin-bottom: 18px; }
+.compare-head p { color: var(--ink-muted); max-width: 52ch; font-size: 16px; }
+.seg { display: inline-flex; padding: 4px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--hairline); }
+.seg button {
+  font: 500 15px/1 var(--f-body); color: var(--ink-muted); background: transparent; border: 0;
+  padding: 11px 18px; border-radius: 999px; cursor: pointer; transition: background 200ms var(--ease), color 200ms var(--ease);
+}
+.seg button[aria-checked="true"] { background: var(--surface-1); color: var(--ink); box-shadow: 0 0 0 1px var(--hairline-strong); }
+.seg button[data-mode="virtual"][aria-checked="true"] { background: var(--accent); color: var(--on-accent); box-shadow: none; }
+.robots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.robot { margin: 0; }
+.plate {
+  position: relative; background: var(--plate); border-radius: var(--radius-md); overflow: hidden;
+  border: 2px solid transparent; transition: border-color 200ms var(--ease);
+}
+.compare[data-mode="virtual"] .plate { border-color: var(--accent); }
+.plate img { width: 100%; aspect-ratio: 489 / 385; object-fit: cover; }
+.plate img.v { position: absolute; inset: 0; opacity: 0; transition: opacity 200ms var(--ease); }
+.compare[data-mode="virtual"] .plate img.v { opacity: 1; }
+.robot figcaption { margin-top: 10px; display: flex; justify-content: space-between; gap: 12px; font-size: 15px; }
+.robot figcaption b { font-weight: 500; }
+.robot figcaption span { color: var(--ink-subtle); }
+
+/* ---------- Summary ---------- */
+.summary { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: start; }
+.summary .abstract { color: var(--ink-muted); font-size: 17px; }
+.summary .abstract p + p { margin-top: 14px; }
+.findings { display: grid; gap: 12px; }
+.finding {
+  display: grid; grid-template-columns: 132px 1fr; gap: 18px; align-items: baseline;
+  padding: 18px 20px; background: var(--surface-1); border: 1px solid var(--hairline); border-radius: var(--radius-md);
+}
+.finding.ours { background: var(--accent-wash); border-color: var(--accent); }
+
+.finding .num { white-space: nowrap; font-family: var(--f-mono); font-weight: 600; font-size: 30px; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.finding p { color: var(--ink-muted); font-size: 15px; line-height: 1.5; }
+.finding p b { color: var(--ink); font-weight: 500; }
+
+/* ---------- Figures ---------- */
+figure { margin: 0; }
+.fig { margin-top: 32px; }
+.fig .plate { padding: clamp(10px, 2vw, 22px); border: 0; }
+.fig .plate img { aspect-ratio: auto; object-fit: contain; }
+.fig figcaption, .tablecap { margin-top: 12px; color: var(--ink-muted); font-size: 15px; max-width: 80ch; }
+.tag { font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.08em; color: var(--ink-subtle); margin-right: 8px; }
+.fig-robots .plate { max-width: 640px; }
+.video { margin-top: 32px; aspect-ratio: 16 / 9; border-radius: var(--radius-md); overflow: hidden; background: #000; border: 1px solid var(--hairline); }
+.video iframe { width: 100%; height: 100%; border: 0; display: block; }
+.pair { display: grid; grid-template-columns: 1.63fr 1fr; gap: 16px; }
+.pair .plate { height: 100%; display: flex; align-items: center; }
+
+.parts { margin-top: 32px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.part { padding: 22px 24px; background: var(--surface-1); border: 1px solid var(--hairline); border-radius: var(--radius-md); }
+.part.ours { background: var(--accent-wash); border-color: var(--accent); }
+.part p { margin-top: 8px; color: var(--ink-muted); font-size: 15.5px; line-height: 1.55; }
+.part i { font-family: "Times New Roman", serif; font-size: 1.08em; }
+
+/* ---------- Table ---------- */
+.table-scroll { margin-top: 32px; overflow-x: auto; border: 1px solid var(--hairline); border-radius: var(--radius-md); background: var(--surface-1); }
+table { border-collapse: collapse; width: 100%; min-width: 620px; font-size: 15px; }
+th, td { padding: 12px 18px; text-align: left; border-bottom: 1px solid var(--hairline); white-space: nowrap; }
+thead th { font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.06em; font-weight: 500; color: var(--ink-subtle); background: var(--surface-2); }
+td.n, th.n { text-align: right; font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+td.n { color: var(--ink-muted); }
+td.n.best { color: var(--ink); font-weight: 600; }
+td.n.fail { color: var(--failure); }
+tbody th { font-weight: 500; vertical-align: top; color: var(--ink); border-right: 1px solid var(--hairline); }
+tbody tr.group-end td, tbody tr.group-end th { border-bottom: 1px solid var(--hairline-strong); }
+tbody tr:last-child td, tbody tr:last-child th { border-bottom: 0; }
+tr.ours td { background: var(--accent-wash); }
+tr.ours td:first-of-type { box-shadow: inset 4px 0 0 var(--accent); color: var(--ink); }
+.ours-label { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.08em; color: var(--accent-text); margin-left: 8px; }
+
+/* ---------- Hardware ---------- */
+.telemetry {
+  margin-top: 32px; display: inline-flex; flex-wrap: wrap; gap: 6px 18px; padding: 10px 16px;
+  background: var(--surface-1); border: 1px solid var(--hairline); border-radius: var(--radius-sm);
+  font-family: var(--f-mono); font-size: 12.5px; letter-spacing: 0.06em; color: var(--ink-muted);
+}
+.runs { margin-top: 16px; display: grid; gap: 16px; }
+.run { display: grid; grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr); gap: 24px; align-items: center;
+  padding: 12px; background: var(--surface-1); border: 1px solid var(--hairline); border-radius: var(--radius-md); }
+.run.ours { background: var(--accent-wash); border: 2px solid var(--accent); }
+.run img { border-radius: var(--radius-sm); width: 100%; }
+.run h3 { font-size: 19px; }
+.run dl { margin: 12px 0 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-size: 15px; }
+.run dt { color: var(--ink-subtle); }
+.run dd { margin: 0; font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-size: 14.5px; }
+.run .note { margin-top: 10px; color: var(--ink-muted); font-size: 14.5px; }
+
+/* ---------- BibTeX ---------- */
+.bib { margin-top: 24px; position: relative; background: var(--surface-1); border: 1px solid var(--hairline); border-radius: var(--radius-md); }
+.bib pre { margin: 0; padding: 22px 24px; overflow-x: auto; font-family: var(--f-mono); font-size: 13.5px; line-height: 1.65; color: var(--ink-muted); }
+.copy {
+  position: absolute; top: 12px; right: 12px; font: 500 14px/1 var(--f-body); padding: 9px 14px; border-radius: 999px;
+  border: 1px solid var(--hairline-strong); background: var(--surface-2); color: var(--ink); cursor: pointer;
+}
+.copy:hover { border-color: var(--ink-muted); }
+
+footer { border-top: 1px solid var(--hairline); padding: 40px 0 56px; color: var(--ink-muted); font-size: 15px; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px 40px; }
+footer p + p { margin-top: 4px; }
+
+@media (max-width: 860px) {
+  .summary { grid-template-columns: 1fr; gap: 32px; }
+  .pair { grid-template-columns: 1fr; }
+  .run { grid-template-columns: 1fr; gap: 14px; }
+  .run > div { padding: 0 6px 6px; }
+}
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  section { padding: 52px 0; }
+  .robots { grid-template-columns: 1fr; }
+  .robot { display: grid; grid-template-columns: 1fr; }
+  .parts { grid-template-columns: 1fr; }
+  .finding { grid-template-columns: 1fr; gap: 4px; }
+  .seg { width: 100%; }
+  .seg button { flex: 1; padding: 11px 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <a class="venue" href="https://arc-kist-manager.github.io/humanoids2026-workshop/">
+      <img src="figures/humanoids2026_logo.png" alt="IEEE-RAS Humanoids 2026" width="140" height="33">
+      <span>Humanoids 2026 Workshop on Multimodal Data for<br>Humanoid Whole-Body Control and Manipulation</span>
+    </a>
+
+    <h1>Reusing Locomotion Training Recipes Across Humanoids via <span class="nw">Body-Aligned</span> Virtual Joints</h1>
+
+    <p class="authors">
+      <span class="nw">Sol Choi<sup>1,2*</sup></span>, <span class="nw">Mingon Kim<sup>3*</sup></span>, <span class="nw">Seokin Seo<sup>1</sup></span>, <span class="nw">Jongeun Choi<sup>2</sup></span>, <span class="nw">Donghyeon Kim<sup>4†</sup></span>, <span class="nw">Yisoo Lee<sup>1†</sup></span>
+    </p>
+    <p class="affil">
+      <span><sup>1</sup> Korea Institute of Science and Technology (KIST)</span>
+      <span><sup>2</sup> Yonsei University</span>
+      <span><sup>3</sup> LG Electronics</span>
+      <span><sup>4</sup> 1X Technologies</span>
+    </p>
+    <p class="notes">* Equal contribution &nbsp;&nbsp; † Corresponding authors</p>
+
+    <nav class="links" aria-label="Paper resources">
+      <!-- Replace each pending item with a real link, e.g. <a class="btn" href="paper.pdf">Paper</a> -->
+      <a class="btn" href="body-aligned-virtual-joint-space.pdf" target="_blank" rel="noopener">Paper</a>
+      <span class="btn is-pending" aria-disabled="true">arXiv <span class="soon">SOON</span></span>
+      <a class="btn" href="https://youtu.be/OZiREPtzmnI" target="_blank" rel="noopener">Video</a>
+      <span class="btn is-pending" aria-disabled="true">Code <span class="soon">SOON</span></span>
+      <a class="btn" href="#poster-bibtex">BibTeX</a>
+    </nav>
+
+    <div class="compare" id="compare" data-mode="native">
+      <div class="compare-head">
+        <p>Three humanoids, three different hip-axis layouts. Switch to the virtual joint view to see the same joints expressed in one shared body convention.</p>
+        <div class="seg" role="radiogroup" aria-label="Joint coordinates shown">
+          <button type="button" role="radio" data-mode="native" aria-checked="true">Native axes</button>
+          <button type="button" role="radio" data-mode="virtual" aria-checked="false" tabindex="-1">Body-aligned axes</button>
+        </div>
+      </div>
+      <div class="robots">
+        <figure class="robot">
+          <div class="plate">
+            <img src="figures/g1_hip_raw.jpg" alt="Unitree G1 hip joint axes in native coordinates" width="900" height="709">
+            <img class="v" src="figures/g1_hip_virtual.jpg" alt="Unitree G1 hip joint axes in body-aligned virtual coordinates" width="900" height="709">
+          </div>
+          <figcaption><b>Unitree G1</b><span>~10° mounting tilt</span></figcaption>
+        </figure>
+        <figure class="robot">
+          <div class="plate">
+            <img src="figures/adam_hip_raw.jpg" alt="PND Adam hip joint axes in native coordinates" width="900" height="709">
+            <img class="v" src="figures/adam_hip_virtual.jpg" alt="PND Adam hip joint axes in body-aligned virtual coordinates" width="900" height="709">
+          </div>
+          <figcaption><b>PND Adam</b><span>hip pitch tilted 35°</span></figcaption>
+        </figure>
+        <figure class="robot">
+          <div class="plate">
+            <img src="figures/kapex_hip_raw.jpg" alt="Custom-built platform hip joint axes in native coordinates" width="900" height="709">
+            <img class="v" src="figures/kapex_hip_virtual.jpg" alt="Custom-built platform hip joint axes in body-aligned virtual coordinates" width="900" height="709">
+          </div>
+          <figcaption><b>Custom-built platform</b><span>oblique hip axes</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="video">
+    <div class="wrap">
+      <h2>Video</h2>
+      <div class="video">
+        <iframe src="https://www.youtube-nocookie.com/embed/OZiREPtzmnI?rel=0" title="Body-aligned virtual joints: project video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section id="summary">
+    <div class="wrap summary">
+      <div>
+        <h2>One recipe, three humanoids</h2>
+        <div class="abstract lead">
+          <p>Locomotion training recipes — rewards, architectures, hyperparameters — are hard to reuse across robots, because policies output native joint angles while action scales, bounds, gains, and penalties are all defined in those robot-specific coordinates.</p>
+          <p>We add a body-aligned virtual joint space upstream of each robot’s transmission. Policy actions and observations follow one anatomical convention, and a deterministic kinematic layer maps virtual targets to native ones, leaving the existing control stack unchanged.</p>
+          <p>Under a single unmodified recipe on three humanoids with different leg-axis layouts, it is the only interface that tracks accurately, keeps the feet aligned with the travel direction, and trains stably on all three.</p>
+        </div>
+      </div>
+      <div class="findings" aria-label="Key results">
+        <div class="finding ours">
+          <span class="num">≈ 6×</span>
+          <p><b>Less heading drift on Unitree G1 hardware.</b> Absolute IMU yaw rate fell from 5.31 to 0.89 °/s over 6 rollouts.</p>
+        </div>
+        <div class="finding">
+          <span class="num">≤ 1.3°</span>
+          <p><b>Toe-out on every robot.</b> On PND Adam, native coordinates give 4.8° and task space 14.2°.</p>
+        </div>
+        <div class="finding">
+          <span class="num">≤ 0.1%</span>
+          <p><b>Of training iterations unstable.</b> Inserting the same map in the training loop reaches 15.3% on Adam.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="method">
+    <div class="wrap">
+      <h2>A virtual joint layer, upstream of the transmission</h2>
+      <p class="lead">The policy acts and observes in a shared body-aligned joint space. An analytic map converts virtual targets into each robot’s native joint targets; four-bar linkages, parallel ankles, PD control, and safety checks stay exactly as they were.</p>
+      <figure class="fig">
+        <div class="plate"><img src="figures/system_overview.png" alt="Pipeline: policy in virtual space, virtual-to-native map, unchanged native-to-actuator transmission, and a native-to-virtual encoder for observations" width="2000" height="924"></div>
+        <figcaption><span class="tag">FIG. 1</span>The proposed modules (yellow) map actions and joint-state observations between the shared virtual space and each robot’s native space.</figcaption>
+      </figure>
+      <div class="parts">
+        <div class="part">
+          <h3>A canonical leg convention</h3>
+          <p>Each leg becomes a 3-DoF hip (yaw, roll, pitch), a 1-DoF knee, and a 2-DoF ankle (roll, pitch), all about body-aligned axes: forward, left, and up.</p>
+        </div>
+        <div class="part">
+          <h3>Orientation matching</h3>
+          <p>Native targets are found by matching link orientations, <i>R̄</i><sub>g</sub>(<i>q</i><sup>des</sup>) = <i>R</i><sup>V</sup><sub>g</sub>(<i>q</i><sup>V,des</sup>), choosing the solution branch continuous with the nominal pose.</p>
+        </div>
+        <div class="part">
+          <h3>Jacobian transfer</h3>
+          <p>The coordinate Jacobian maps joint velocities, <i>q̇</i><sup>V</sup> = <i>J q̇</i>, and turns one virtual PD gain set into native gains, <i>K</i><sub>r</sub> = diag(<i>J</i><sup>⊤</sup><i>K</i><sup>V</sup><i>J</i>).</p>
+        </div>
+        <div class="part ours">
+          <h3>Post-hoc insertion</h3>
+          <p>Train on a body-aligned model of the same robot, then apply the map only at deployment. This avoids the optimization instability that appears when the map runs inside the training loop.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="simulation">
+    <div class="wrap">
+      <h2>Accurate tracking and aligned feet in simulation</h2>
+      <p class="lead">Every policy is trained in Isaac Lab with the Unitree RL Lab velocity-tracking recipe and evaluated closed-loop in MuJoCo, over 25 velocity commands and three seeds. Only the joint-coordinate interface changes.</p>
+
+      <figure class="fig fig-robots">
+        <div class="plate"><img src="figures/robots_fullbody.jpg" alt="Unitree G1, PND Adam and the custom-built platform with their leg joint axes drawn as colored arrows" width="1128" height="739" loading="lazy"></div>
+        <figcaption><span class="tag">FIG. 2</span>Humanoid platforms used in simulation—Unitree G1, PND Adam, and a custom-built platform—with their leg joint-axis configurations.</figcaption>
+      </figure>
+
+      <div class="table-scroll" role="region" aria-label="Table: sim-to-sim velocity tracking" tabindex="0">
+        <table>
+          <thead>
+            <tr><th scope="col">Robot</th><th scope="col">Interface</th><th scope="col" class="n">Velocity error (m/s)</th><th scope="col" class="n">Lateral drift (m)</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="rowgroup" rowspan="4">Unitree G1</th><td>Native</td><td class="n best">0.042 ± 0.001</td><td class="n">0.086 ± 0.001</td></tr>
+            <tr><td>Task space</td><td class="n">0.048 ± 0.002</td><td class="n">0.129 ± 0.003</td></tr>
+            <tr><td>Virtual, in-loop</td><td class="n best">0.042 ± 0.007</td><td class="n best">0.084 ± 0.001</td></tr>
+            <tr class="ours group-end"><td>Virtual, post-hoc<span class="ours-label">OURS</span></td><td class="n">0.053 ± 0.018</td><td class="n">0.089 ± 0.003</td></tr>
+
+            <tr><th scope="rowgroup" rowspan="4">PND Adam</th><td>Native</td><td class="n">0.106 ± 0.018</td><td class="n">0.094 ± 0.007</td></tr>
+            <tr><td>Task space</td><td class="n">0.207 ± 0.016</td><td class="n">0.082 ± 0.010</td></tr>
+            <tr><td>Virtual, in-loop</td><td class="n">0.143 ± 0.034</td><td class="n">0.113 ± 0.013</td></tr>
+            <tr class="ours group-end"><td>Virtual, post-hoc<span class="ours-label">OURS</span></td><td class="n best">0.085 ± 0.018</td><td class="n best">0.075 ± 0.006</td></tr>
+
+            <tr><th scope="rowgroup" rowspan="4">Custom-built</th><td>Native</td><td class="n">0.032 ± 0.005</td><td class="n">0.042 ± 0.002</td></tr>
+            <tr><td>Task space</td><td class="n fail">0.477 ± 0.333</td><td class="n">0.120 ± 0.070</td></tr>
+            <tr><td>Virtual, in-loop</td><td class="n">0.033 ± 0.005</td><td class="n">0.040 ± 0.003</td></tr>
+            <tr class="ours"><td>Virtual, post-hoc<span class="ours-label">OURS</span></td><td class="n best">0.029 ± 0.002</td><td class="n best">0.033 ± 0.005</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tablecap"><span class="tag">TABLE 1</span>Mean ± std over three seeds. Lateral drift is measured after a 20 s straight walk. Bold marks the best value per robot; the task-space baseline barely advances on the custom platform.</p>
+
+      <div class="fig pair">
+        <figure>
+          <div class="plate"><img src="figures/toeout_angle.png" alt="Box plots of foot-progression angle for each interface on three robots" width="1400" height="764"></div>
+        </figure>
+        <figure>
+          <div class="plate"><img src="figures/adam_swing_leg.jpg" alt="Swing-leg motion on PND Adam under native, task-space and proposed interfaces" width="1100" height="978"></div>
+        </figure>
+      </div>
+      <p class="tablecap"><span class="tag">FIG. 3</span>Left: foot-progression angle by platform and interface. Right: swing legs on PND Adam. With oblique hips, native coordinates splay the feet outward; the virtual interface keeps them aligned with the travel direction.</p>
+
+      <figure class="fig">
+        <div class="plate"><img src="figures/training_stability.png" alt="Mean episode length over 6000 training iterations for four interfaces on three robots" width="1320" height="508"></div>
+        <figcaption><span class="tag">FIG. 4</span>Mean episode length during training (three seeds). The post-hoc interface trains consistently on all three robots, while the in-loop variant stalls on PND Adam.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="hardware">
+    <div class="wrap">
+      <h2>Six times less heading drift on hardware</h2>
+      <p class="lead">We deployed each controller on a Unitree G1 with no reward retuning or gain adjustment and commanded it to walk straight at 0.5 m/s. In simulation the interfaces looked alike on G1; on hardware they did not.</p>
+      <p class="telemetry" aria-label="Experiment conditions"><span>REAL</span><span>1×</span><span>UNITREE G1</span><span>vx = 0.5 m/s</span><span>6 ROLLOUTS EACH</span></p>
+      <div class="runs">
+        <figure class="run">
+          <img src="figures/hw_native.jpg" alt="Native interface: the G1 curves toward the edge of the test area" width="1400" height="597">
+          <div>
+            <h3>Native joint space</h3>
+            <dl><dt>Distance</dt><dd>5.1 ± 1.7 m</dd><dt>Yaw rate</dt><dd>5.31 ± 1.90 °/s</dd></dl>
+            <p class="note">Drifted to the edge of the test area and was stopped.</p>
+          </div>
+        </figure>
+        <figure class="run">
+          <img src="figures/hw_inloop.jpg" alt="Virtual in-loop interface: the G1 also curves away from the reference line" width="1400" height="597">
+          <div>
+            <h3>Virtual joint space, in-loop</h3>
+            <dl><dt>Distance</dt><dd>6.9 ± 3.0 m</dd><dt>Yaw rate</dt><dd>4.08 ± 1.02 °/s</dd></dl>
+            <p class="note">Drifted to the edge of the test area and was stopped.</p>
+          </div>
+        </figure>
+        <figure class="run ours">
+          <img src="figures/hw_posthoc.jpg" alt="Proposed post-hoc interface: the G1 follows the 10 m reference line" width="1400" height="597">
+          <div>
+            <h3>Virtual joint space, post-hoc (ours)</h3>
+            <dl><dt>Distance</dt><dd>13.8 ± 1.1 m</dd><dt>Yaw rate</dt><dd>0.89 ± 0.54 °/s</dd></dl>
+            <p class="note">Every rollout reached the end of the walkway; distance was limited by the room.</p>
+          </div>
+        </figure>
+      </div>
+      <p class="tablecap" style="margin-top:16px">The encoder and decoder add about 0.2 ms per control step on a Jetson Orin NX, roughly 1% of the 20 ms control period.</p>
+    </div>
+  </section>
+
+  <section id="poster-bibtex">
+    <div class="wrap">
+      <h2>Cite this work</h2>
+      <div class="bib">
+        <button class="copy" type="button" id="copy">Copy</button>
+<pre id="bibtex">@inproceedings{choi2026reusing,
+  title     = {Reusing Locomotion Training Recipes Across Humanoids
+               via Body-Aligned Virtual Joints},
+  author    = {Choi, Sol and Kim, Mingon and Seo, Seokin and
+               Choi, Jongeun and Kim, Donghyeon and Lee, Yisoo},
+  booktitle = {IEEE-RAS Humanoids 2026 Workshop on Multimodal Data for
+               Humanoid Whole-Body Control and Manipulation},
+  year      = {2026}
+}</pre>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <p>Questions about the paper: <a href="mailto:solchoi@kist.re.kr">solchoi@kist.re.kr</a></p>
+      <p>Corresponding author: <a href="mailto:yisoo.lee@kist.re.kr">yisoo.lee@kist.re.kr</a></p>
+    </div>
+    <p><a href="https://arc-kist-manager.github.io/humanoids2026-workshop/">Workshop page</a> &nbsp;·&nbsp; <a href="https://2026.ieee-humanoids.org/">Humanoids 2026</a></p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var box = document.getElementById("compare");
+  var btns = Array.prototype.slice.call(box.querySelectorAll(".seg button"));
+  function set(mode, focus) {
+    box.setAttribute("data-mode", mode);
+    btns.forEach(function (b) {
+      var on = b.getAttribute("data-mode") === mode;
+      b.setAttribute("aria-checked", on ? "true" : "false");
+      b.tabIndex = on ? 0 : -1;
+      if (on && focus) b.focus();
+    });
+  }
+  btns.forEach(function (b, i) {
+    b.addEventListener("click", function () { set(b.getAttribute("data-mode")); });
+    b.addEventListener("keydown", function (e) {
+      if (["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].indexOf(e.key) < 0) return;
+      e.preventDefault();
+      set(btns[(i + 1) % btns.length].getAttribute("data-mode"), true);
+    });
+  });
+
+  var copy = document.getElementById("copy");
+  copy.addEventListener("click", function () {
+    var text = document.getElementById("bibtex").textContent;
+    function done(ok) {
+      copy.textContent = ok ? "Copied" : "Select and copy";
+      setTimeout(function () { copy.textContent = "Copy"; }, 1800);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); });
+    } else {
+      try {
+        var r = document.createRange(); r.selectNodeContents(document.getElementById("bibtex"));
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        done(document.execCommand("copy"));
+      } catch (err) { done(false); }
+    }
+  });
+})();
+</script>
+</body>
+</html>
