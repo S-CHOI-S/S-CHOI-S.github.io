@@ -6,9 +6,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Reusing Locomotion Training Recipes Across Humanoids via Body-Aligned Virtual Joints</title>
 <meta name="description" content="A body-aligned virtual joint interface that lets one unmodified locomotion training recipe work across humanoids with different leg-axis layouts.">
+<link rel="icon" type="image/png" href="/images/bs.png">
+<link rel="canonical" href="https://s-choi-s.github.io/publications/body-aligned-virtual-joint-space/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="S-CHOI-S">
+<meta property="og:title" content="Reusing Locomotion Training Recipes Across Humanoids via Body-Aligned Virtual Joints">
+<meta property="og:description" content="A body-aligned virtual joint interface that lets one unmodified locomotion training recipe work across humanoids with different leg-axis layouts.">
+<meta property="og:url" content="https://s-choi-s.github.io/publications/body-aligned-virtual-joint-space/">
+<meta property="og:image" content="https://s-choi-s.github.io/publications/body-aligned-virtual-joint-space/figures/social_card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Paper title next to Unitree G1, PND Adam and a custom-built humanoid with their leg joint axes">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Reusing Locomotion Training Recipes Across Humanoids via Body-Aligned Virtual Joints">
+<meta name="twitter:description" content="A body-aligned virtual joint interface that lets one unmodified locomotion training recipe work across humanoids with different leg-axis layouts.">
+<meta name="twitter:image" content="https://s-choi-s.github.io/publications/body-aligned-virtual-joint-space/figures/social_card.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 <style>
 :root {
   color-scheme: light;
@@ -84,8 +102,11 @@ p { margin: 0; }
 
 /* ---------- Hero ---------- */
 .hero { padding: 56px 0 64px; }
-.venue { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; color: var(--ink-muted); font-size: 15px; line-height: 1.4; }
-.venue img { height: 30px; width: auto; background: #fff; border-radius: 6px; padding: 4px 8px; }
+.crumbs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.04em; color: var(--ink-subtle); }
+.crumbs a { color: var(--ink-muted); text-decoration: none; }
+.crumbs a:hover { color: var(--ink); text-decoration: underline; }
+.venue { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; text-decoration: none; color: var(--ink-muted); font-size: 16px; line-height: 1.4; }
+.venue img { height: 60px; width: auto; background: #fff; border-radius: var(--radius-sm); padding: 9px 14px; }
 .venue:hover span { color: var(--ink); }
 h1 {
   font-size: clamp(38px, 6.2vw, 76px); line-height: 1.02; letter-spacing: -0.035em;
@@ -161,6 +182,31 @@ figure { margin: 0; }
 .pair { display: grid; grid-template-columns: 1.63fr 1fr; gap: 16px; }
 .pair .plate { height: 100%; display: flex; align-items: center; }
 
+.facts { margin-top: 20px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.fact { padding: 16px 20px; background: var(--surface-1); border: 1px solid var(--hairline); border-radius: var(--radius-md); }
+.fact .mono { font-size: 11.5px; color: var(--ink-subtle); }
+.fact b { display: block; margin-top: 4px; font-family: var(--f-display); font-size: 19px; font-weight: 500; }
+.fact p { margin-top: 2px; color: var(--ink-muted); font-size: 14.5px; line-height: 1.5; }
+.metrics-head { margin-top: 40px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
+.metrics-head p { color: var(--ink-muted); font-size: 15px; }
+.metrics { margin-top: 14px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
+.metric { padding: 18px 20px; background: var(--surface-1); border: 1px solid var(--hairline); border-radius: var(--radius-md); min-width: 0; }
+.metric .mono { font-size: 11.5px; color: var(--ink-subtle); }
+.metric h4 { margin: 4px 0 0; font-family: var(--f-display); font-size: 18px; font-weight: 500; }
+.metric .eq { margin: 12px 0; padding: 10px 12px; background: var(--surface-2); border-radius: var(--radius-sm); overflow-x: auto; overflow-y: hidden; font-size: 15px; }
+.metric .eq .katex-display { margin: 0; }
+.metric p { color: var(--ink-muted); font-size: 14.5px; line-height: 1.55; }
+.ifaces { margin-top: 14px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.metric.ours { background: var(--accent-wash); border-color: var(--accent); }
+.metric.ours .mono { color: var(--accent-text); }
+.callout { margin-top: 28px; padding: 22px 24px; background: var(--surface-1); border: 1px solid var(--hairline); border-left: 4px solid var(--accent); border-radius: var(--radius-md); }
+.callout .mono { font-size: 11.5px; color: var(--accent-text); }
+.callout h3 { margin-top: 6px; }
+.callout p { margin-top: 10px; color: var(--ink-muted); font-size: 15.5px; line-height: 1.6; max-width: 82ch; }
+.callout .eq { margin: 14px 0 4px; padding: 10px 14px; background: var(--surface-2); border-radius: var(--radius-sm); overflow-x: auto; overflow-y: hidden; font-size: 15px; }
+.callout .eq .katex-display { margin: 0; }
+.table-scroll.compact { display: inline-block; max-width: 100%; }
+.table-scroll.compact table { min-width: 0; width: auto; }
 .parts { margin-top: 32px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
 .part { padding: 22px 24px; background: var(--surface-1); border: 1px solid var(--hairline); border-radius: var(--radius-md); }
 .part.ours { background: var(--accent-wash); border-color: var(--accent); }
@@ -225,6 +271,10 @@ footer p + p { margin-top: 4px; }
   .robots { grid-template-columns: 1fr; }
   .robot { display: grid; grid-template-columns: 1fr; }
   .parts { grid-template-columns: 1fr; }
+  .facts { grid-template-columns: 1fr; }
+  .venue img { height: 50px; padding: 8px 12px; }
+  .venue br { display: none; }
+  .table-scroll.compact th, .table-scroll.compact td { padding: 10px 12px; }
   .finding { grid-template-columns: 1fr; gap: 4px; }
   .seg { width: 100%; }
   .seg button { flex: 1; padding: 11px 10px; }
@@ -238,9 +288,10 @@ footer p + p { margin-top: 4px; }
 
 <header class="hero">
   <div class="wrap">
+    <nav class="crumbs" aria-label="Site"><a href="/">S-CHOI-S</a><span aria-hidden="true">/</span><a href="/publications/">Publications</a></nav>
     <a class="venue" href="https://arc-kist-manager.github.io/humanoids2026-workshop/">
       <img src="figures/humanoids2026_logo.png" alt="IEEE-RAS Humanoids 2026" width="140" height="33">
-      <span>Humanoids 2026 Workshop on Multimodal Data for<br>Humanoid Whole-Body Control and Manipulation</span>
+      <span>Humanoids 2026 Workshop on Multimodal Data for <br>Humanoid Whole-Body Control and Manipulation</span>
     </a>
 
     <h1>Reusing Locomotion Training Recipes Across Humanoids via <span class="nw">Body-Aligned</span> Virtual Joints</h1>
@@ -329,11 +380,11 @@ footer p + p { margin-top: 4px; }
       <div class="findings" aria-label="Key results">
         <div class="finding ours">
           <span class="num">≈ 6×</span>
-          <p><b>Less heading drift on Unitree G1 hardware.</b> Absolute IMU yaw rate fell from 5.31 to 0.89 °/s over 6 rollouts.</p>
+          <p><b>Less heading drift on Unitree G1 hardware.</b> Absolute IMU yaw rate over the same 5 s of steady walking fell from 5.31 to 0.89 °/s (6 rollouts each).</p>
         </div>
         <div class="finding">
           <span class="num">≤ 1.3°</span>
-          <p><b>Toe-out on every robot.</b> On PND Adam, native coordinates give 4.8° and task space 14.2°.</p>
+          <p><b>Toe-out on every robot.</b> On PND Adam ours gives 0.5°, while native coordinates give 4.8° and task space 14.2°.</p>
         </div>
         <div class="finding">
           <span class="num">≤ 0.1%</span>
@@ -351,6 +402,11 @@ footer p + p { margin-top: 4px; }
         <div class="plate"><img src="figures/system_overview.png" alt="Pipeline: policy in virtual space, virtual-to-native map, unchanged native-to-actuator transmission, and a native-to-virtual encoder for observations" width="2000" height="924"></div>
         <figcaption><span class="tag">FIG. 1</span>The proposed modules (yellow) map actions and joint-state observations between the shared virtual space and each robot’s native space.</figcaption>
       </figure>
+      <div class="facts">
+        <div class="fact"><span class="mono">DROP-IN</span><b>Same action dimension</b><p>The robot’s control stack stays unchanged.</p></div>
+        <div class="fact"><span class="mono">NO EXTRA DOF</span><b>Deterministic map</b><p>The same map runs in simulation and on the robot.</p></div>
+        <div class="fact"><span class="mono">OVERHEAD</span><b>0.2 ms per step</b><p>About 1% of the 20 ms control period on a Jetson Orin NX.</p></div>
+      </div>
       <div class="parts">
         <div class="part">
           <h3>A canonical leg convention</h3>
@@ -381,6 +437,76 @@ footer p + p { margin-top: 4px; }
         <div class="plate"><img src="figures/robots_fullbody.jpg" alt="Unitree G1, PND Adam and the custom-built platform with their leg joint axes drawn as colored arrows" width="1128" height="739"></div>
         <figcaption><span class="tag">FIG. 2</span>Humanoid platforms used in simulation—Unitree G1, PND Adam, and a custom-built platform—with their leg joint-axis configurations.</figcaption>
       </figure>
+
+      <div class="metrics-head">
+        <h3>Four interfaces, one recipe</h3>
+        <p>Network, PPO settings, observations, rewards, and curriculum are identical; only the joint-coordinate interface changes.</p>
+      </div>
+      <div class="ifaces">
+        <div class="metric">
+          <span class="mono">BASELINE</span>
+          <h4>Native joint space</h4>
+          <p>The policy acts and observes directly in each robot’s native joint coordinates. This is the usual setup.</p>
+        </div>
+        <div class="metric">
+          <span class="mono">BASELINE · DUAN ET AL. 2021</span>
+          <h4>Task space</h4>
+          <p>The policy outputs foot-position residuals plus hip-yaw and foot-pitch targets; a model-based task-space controller turns them into joint commands.</p>
+        </div>
+        <div class="metric">
+          <span class="mono">VARIANT</span>
+          <h4>Virtual joint space, in-loop</h4>
+          <p>The policy acts in body-aligned coordinates, and the coordinate map runs on the unmodified native model throughout training.</p>
+        </div>
+        <div class="metric ours">
+          <span class="mono">OURS</span>
+          <h4>Virtual joint space, post-hoc</h4>
+          <p>Train on a body-aligned model of the robot, then apply the coordinate map to the native robot only at deployment.</p>
+        </div>
+      </div>
+
+      <div class="metrics-head">
+        <h3>How we measure</h3>
+        <p>Definitions of the metrics in Table 1, Fig. 3, Table 2, Fig. 4, and the hardware test.</p>
+      </div>
+      <div class="metrics" id="metrics">
+        <div class="metric">
+          <span class="mono">TABLE 1</span>
+          <h4>Velocity error</h4>
+          <div class="eq">\[ e_v = \frac{1}{25}\sum_{c=1}^{25} \Big\langle \big\lVert \mathbf{v}^{\mathrm{cmd}}_{c} - \mathbf{v}_{b} \big\rVert \Big\rangle_t \]</div>
+          <p>Gap between the commanded and measured base velocity in the base heading frame, averaged over time and over 25 constant commands with \(v_x \in [-0.5, 1.0]\) m/s, \(v_y \in [-0.3, 0.3]\) m/s, and \(\omega_z \in [-0.2, 0.2]\) rad/s.</p>
+        </div>
+        <div class="metric">
+          <span class="mono">TABLE 1</span>
+          <h4>Lateral drift</h4>
+          <div class="eq">\[ d_{\mathrm{lat}} = \big\lvert\, y_b(t = 20\,\mathrm{s}) \,\big\rvert \]</div>
+          <p>Sideways displacement after a 20 s straight walk at \(v_x = 0.5\) m/s with \(v_y = \omega_z = 0\), measured in the initial base heading frame.</p>
+        </div>
+        <div class="metric">
+          <span class="mono">FIG. 3</span>
+          <h4>Foot-progression angle</h4>
+          <div class="eq">\[ \begin{aligned} \mathrm{FPA}_f &= \operatorname{atan2}\big(r^{f}_{21},\, r^{f}_{11}\big) - \psi_b \\ \overline{\lvert \mathrm{FPA} \rvert} &= \tfrac{1}{2} \textstyle\sum_{f \in \{L,R\}} \big\langle \lvert \mathrm{FPA}_f \rvert \big\rangle \end{aligned} \]</div>
+          <p>Foot heading relative to the base heading \(\psi_b\) at mid-stance, from the foot rotation \(\mathbf{R}_f = [r^f_{ij}]\), averaged over mid-stance samples, gait cycles, and both feet. 0° means the feet point where the body goes.</p>
+        </div>
+        <div class="metric">
+          <span class="mono">TABLE 2</span>
+          <h4>Inter-leg phase error</h4>
+          <div class="eq">\[ e_{\Phi} = 100 \left\langle \left\lvert \frac{\tau^{R}_{k} - t^{L}_{k}}{\widetilde{T}} - \frac{1}{2} \right\rvert \right\rangle_{k} \]</div>
+          <p>\(t^L_k\) is the \(k\)-th left-foot lift-off, \(\tau^R_k\) the first right-foot lift-off after it, and \(\widetilde{T}\) the median gait period. 0 means exact left–right alternation. Gait-period variability is reported as the coefficient of variation \(\mathrm{CV}(T)\).</p>
+        </div>
+        <div class="metric">
+          <span class="mono">FIG. 4</span>
+          <h4>Instability fraction</h4>
+          <div class="eq">\[ \rho = \frac{1}{K - k_0} \sum_{k = k_0 + 1}^{K} \mathbf{1}\!\left[\, \bar{L}_k < \tfrac{1}{2} L_{\max} \right] \]</div>
+          <p>Share of training iterations in which the mean episode length \(\bar{L}_k\) falls back below half its maximum, counted after it first reaches that level at iteration \(k_0\). Rewards are not compared, because the interfaces change the scale of action penalties.</p>
+        </div>
+        <div class="metric">
+          <span class="mono">HARDWARE</span>
+          <h4>Heading drift</h4>
+          <div class="eq">\[ \overline{\lvert \dot{\psi} \rvert} = \frac{1}{N} \sum_{k=1}^{N} \big\lvert\, \omega^{\mathrm{IMU}}_{z,k} \big\rvert \]</div>
+          <p>Mean absolute IMU yaw rate over the same 5 s of steady walking, since base position was not logged on hardware.</p>
+        </div>
+      </div>
 
       <div class="table-scroll" role="region" aria-label="Table: sim-to-sim velocity tracking" tabindex="0">
         <table>
@@ -416,6 +542,32 @@ footer p + p { margin-top: 4px; }
         </figure>
       </div>
       <p class="tablecap"><span class="tag">FIG. 3</span>Left: foot-progression angle by platform and interface. Right: swing legs on PND Adam. With oblique hips, native coordinates splay the feet outward; the virtual interface keeps them aligned with the travel direction.</p>
+
+      <div class="callout">
+        <span class="mono">WHY ADAM SPLAYS ITS FEET</span>
+        <h3>A 35° hip tilt turns stepping into twisting</h3>
+        <p>On PND Adam the hip-pitch axis, the first joint of the leg and the one that moves most while walking, is tilted 35° about the fore–aft axis, mirrored on the two legs. A native hip-pitch command therefore also twists each thigh, in opposite directions:</p>
+        <div class="eq">\[ \begin{gathered} \Delta\psi_{\text{thigh}} \approx \sin(35^\circ)\,\theta \approx 0.57\,\theta \\ \theta = 23^\circ \;\Rightarrow\; \Delta\psi_{\text{thigh}} \approx 13^\circ \end{gathered} \]</div>
+        <p>Native coordinates can cancel this only if the policy learns the axis mixing; the virtual interface removes it analytically. On G1 and the custom platform the tilt is about the lateral axis and shared by both legs, so hip pitch is unaffected and toe-out stays at or below 1.7° for every interface. The interface does not reduce toe-out everywhere; it removes the splay that oblique hips cause.</p>
+      </div>
+
+      <div class="metrics-head">
+        <h3>Steadier left–right timing</h3>
+        <p>Foot alignment does not capture timing, so we also measure how evenly the legs alternate.</p>
+      </div>
+      <div class="table-scroll compact" role="region" aria-label="Table: inter-leg phase error" tabindex="0">
+        <table>
+          <thead>
+            <tr><th scope="col">Robot</th><th scope="col" class="n">Native</th><th scope="col" class="n">Ours (post-hoc)</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Unitree G1</th><td class="n">1.62</td><td class="n best">0.23</td></tr>
+            <tr><th scope="row">PND Adam</th><td class="n">2.59</td><td class="n best">2.36</td></tr>
+            <tr><th scope="row">Custom-built</th><td class="n">1.64</td><td class="n best">0.54</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tablecap"><span class="tag">TABLE 2</span>Inter-leg phase error \(e_\Phi\) (%), averaged over steady-state rollouts from three seeds. Ours matches or beats native coordinates on every robot without per-robot tuning; the gain on Adam is small. The other interfaces depend more on the robot: task space reaches \(\mathrm{CV}(T) = 11.4\%\) on the custom platform (native and ours stay below 0.6%) and settles into a near-straight-knee gait on G1 and the custom platform, and one in-loop seed on Adam converges to a much shorter gait period (0.668 s versus about 0.81 s).</p>
 
       <figure class="fig">
         <div class="plate"><img src="figures/training_stability.png" alt="Mean episode length over 6000 training iterations for four interfaces on three robots" width="1320" height="508"></div>
@@ -455,7 +607,39 @@ footer p + p { margin-top: 4px; }
           </div>
         </figure>
       </div>
-      <p class="tablecap" style="margin-top:16px">The encoder and decoder add about 0.2 ms per control step on a Jetson Orin NX, roughly 1% of the 20 ms control period.</p>
+      <p class="tablecap" style="margin-top:16px">Yaw rate is the mean absolute IMU yaw rate over the same 5 s of steady walking, averaged over 6 rollouts per interface.</p>
+
+      <div class="callout">
+        <span class="mono">WHY HARDWARE SHOWS WHAT SIMULATION HID</span>
+        <h3>Small, same-sign errors add up over a walk</h3>
+        <p>Heading drift is signed and accumulates. A small out-of-plane component of the swing foot gives a yaw impulse of the same sign at every step. An averaged velocity error cannot see that bias, but over a 10 m walkway it adds up to meters. The difference was already there in simulation, in gait timing rather than task error: on the same G1, the inter-leg phase error fell from 1.62% to 0.23% (Table 2).</p>
+        <p>On hardware, calibration residuals, mounting tolerances, transmission compliance, and tracking lag each add a small rotation between the commanded and the realized link orientation. In oblique native axes, that turns a purely forward intent into a systematic sideways and yaw motion, which a native policy can offset only through the axis mixing it learned from the nominal simulated geometry. The virtual interface supplies that mixing analytically, so the residual stays a small disturbance on a body-aligned action. Confirming this cause would need dedicated hardware ablations.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="future">
+    <div class="wrap">
+      <h2>Future work</h2>
+      <p class="lead">This study covers legged velocity tracking, with three seeds per setting and hardware tests on one robot. Next, we want to reuse not only training recipes but also motions across humanoids.</p>
+      <div class="parts">
+        <div class="part">
+          <h3>Whole-body interface</h3>
+          <p>Extend the convention to the arms, waist, and torso, beyond the 12-DoF legs.</p>
+        </div>
+        <div class="part">
+          <h3>Motion imitation</h3>
+          <p>Train whole-body imitation policies on body-aligned reference motions.</p>
+        </div>
+        <div class="part">
+          <h3>Shared motion data</h3>
+          <p>Reuse one body-aligned motion set across heterogeneous humanoids.</p>
+        </div>
+        <div class="part">
+          <h3>Broader validation</h3>
+          <p>Hardware tests on all three robots, more seeds, and tasks beyond walking.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -489,6 +673,14 @@ footer p + p { margin-top: 4px; }
 </footer>
 
 <script>
+window.addEventListener("load", function () {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.querySelector("main"), {
+      delimiters: [{ left: "\\[", right: "\\]", display: true }, { left: "\\(", right: "\\)", display: false }],
+      throwOnError: false
+    });
+  }
+});
 (function () {
   var box = document.getElementById("compare");
   var btns = Array.prototype.slice.call(box.querySelectorAll(".seg button"));
